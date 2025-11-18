@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>교양 과목 추천기3</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 24px;
+      line-height: 1.5;
+    }
+    h1, h2 {
+      color: #333;
+    }
+    fieldset {
+      margin-bottom: 20px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      padding: 16px;
+    }
+    legend {
+      font-weight: 600;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+    }
+    select, button {
+      padding: 6px 8px;
+      margin-top: 4px;
+    }
+    button {
+      cursor: pointer;
+      border-radius: 6px;
+      border: 1px solid #333;
+      background: #333;
+      color: #fff;
+      font-weight: 600;
+    }
+    button:hover {
+      background: #555;
+    }
+    #result {
+      margin-top: 32px;
+      padding: 16px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      background: #fafafa;
+    }
+    .course-card {
+      border-bottom: 1px solid #e0e0e0;
+      padding: 12px 0;
+    }
+    .course-card:last-child {
+      border-bottom: none;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 6px;
+      margin-right: 4px;
+      border-radius: 4px;
+      font-size: 12px;
+      background: #eee;
+    }
+  </style>
+</head>
+<body>
+  <h1>나에게 맞는 교양 과목 추천</h1>
+  <p>아래 질문에 답하면, 응답을 바탕으로 몇 개의 교양 과목을 추천해 준다.</p>
+
+  <form id="survey-form">
+    <fieldset>
+      <legend>1. 나의 한국어 수준</legend>
+      <label for="koreanLevel">TOPIK 기준에 가장 가까운 수준을 골라 주세요.</label>
+      <select name="koreanLevel" id="koreanLevel">
+        <option value="3">3급 전후</option>
+        <option value="4" selected>4급 전후</option>
+        <option value="5">5급 이상</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>2. 전공 계열</legend>
+      <select name="majorType" id="majorType">
+        <option value="ani">애니/만화/웹툰</option>
+        <option value="game">게임</option>
+        <option value="beauty">뷰티</option>
+        <option value="food">푸드</option>
+        <option value="etc">기타/통합</option>
+      </select>
+    </fieldset>
+
+    <fieldset>
+      <legend>3. 관심 분야 (복수 선택 가능)</legend>
+      <label><input type="checkbox" name="interest" value="문학"> 문학/이야기</label>
+      <label><input type="checkbox" name="interest" value="심리"> 심리/상담</label>
+      <label><input type="checkbox" name="interest" value="경제"> 경제/사회</label>
+      <label><input type="checkbox" name="interest" value="문화"> 문화산업/K-컬처</label>
+      <label><input type="checkbox" name="interest" value="다문화"> 다문화/디아스포라</label>
+    </fieldset>
+
+    <fieldset>
+      <legend>4. 수업 난이도 선호</legend>
+      <label><input type="radio" name="difficultyPref" value="easy" checked> 가볍게 듣고 싶어요</label>
+      <label><input type="radio" name="difficultyPref" value="normal"> 적당히 도전하고 싶어요</label>
+      <label><input type="radio" name="difficultyPref" value="hard"> 깊이 있게 공부하고 싶어요</label>
+    </fieldset>
+
+    <button type="submit">추천 과목 보기</button>
+  </form>
+
+  <div id="result"></div>
+
+  <!-- 과목 데이터 & 로직 스크립트 -->
+  <script>
+    // 1. 교과목 데이터 (예시)
+    // 실제로는 여기 부분만 수정해서 학교 교양 과목 리스트를 넣으면 됨.
+    const COURSES = [
+      {
+        id: "LIT101",
+        name: "문학 속 캐릭터 만나기",
+        desc: "소설과 시, 웹툰 캐릭터를 함께 읽으며 서사와 캐릭터를 분석하는 수업.",
+        koreanLevel: 4,
+        difficulty: 3,
+        tags: ["문학", "문화"],
+        targetGrade: [1, 2],
+        majorTypes: ["ani", "game", "etc"]
+      },
+      {
+        id: "PSY101",
+        name: "더 나은 삶을 위한 심리학",
+        desc: "일상에서 만나는 감정과 대인관계를 심리학 관점에서 이해하는 교양.",
+        koreanLevel: 4,
+        difficulty: 2,
+        tags: ["심리"],
+        targetGrade: [1, 2, 3],
+        majorTypes: ["ani", "game", "beauty", "food", "etc"]
+      },
+      {
+        id: "PSY201",
+        name: "대인관계 심리학",
+        desc: "관계 패턴, 의사소통 스타일을 심층적으로 다루는 심리 교과.",
+        koreanLevel: 5,
+        difficulty: 4,
+        tags: ["심리"],
+        targetGrade: [2, 3, 4],
+        majorTypes: ["etc"]
+      },
+      {
+        id: "CUL101",
+        name: "K-컬처로 보는 문화산업",
+        desc: "K-팝, 드라마, 웹툰 등 한류 콘텐츠를 문화산업 관점에서 분석.",
+        koreanLevel: 4,
+        difficulty: 3,
+        tags: ["문화", "경제"],
+        targetGrade: [1, 2, 3],
+        majorTypes: ["ani", "game", "beauty", "food", "etc"]
+      },
+      {
+        id: "ECO101",
+        name: "슬기로운 경제생활",
+        desc: "실생활 사례를 중심으로 소비, 저축, 투자 등 기본 경제 개념을 다루는 수업.",
+        koreanLevel: 4,
+        difficulty: 3,
+        tags: ["경제"],
+        targetGrade: [1, 2],
+        majorTypes: ["etc"]
+      },
+      {
+        id: "DIA101",
+        name: "디아스포라와 문화다양성",
+        desc: "이주, 난민, 재외동포 사례를 통해 문화 혼종성과 정체성을 탐구.",
+        koreanLevel: 5,
+        difficulty: 4,
+        tags: ["다문화", "문화"],
+        targetGrade: [2, 3, 4],
+        majorTypes: ["ani", "game", "etc"]
+      }
+    ];
+
+    // 2. 설문 제출 이벤트 처리
+    document.getElementById("survey-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const form = e.target;
+      const koreanLevel = parseInt(form.koreanLevel.value, 10);
+      const majorType = form.majorType.value;
+
+      const interestNodes = form.querySelectorAll('input[name="interest"]:checked');
+      const interests = Array.from(interestNodes).map(i => i.value);
+
+      const difficultyPref = form.querySelector('input[name="difficultyPref"]:checked').value;
+
+      const answers = { koreanLevel, majorType, interests, difficultyPref };
+      const recommended = getRecommendedCourses(answers);
+
+      renderResult(answers, recommended);
+    });
+
+    // 3. 추천 로직
+    function getRecommendedCourses(answer) {
+      const { koreanLevel, majorType, interests, difficultyPref } = answer;
+
+      return COURSES
+        .map(course => {
+          let score = 0;
+
+          // (1) 한국어 수준: 너무 어렵다면 제외
+          if (course.koreanLevel - koreanLevel > 1) {
+            return null; // 레벨 차이가 2 이상 나면 추천에서 제외
+          } else if (course.koreanLevel <= koreanLevel) {
+            score += 2; // 수준이 같거나 조금 낮으면 가산점
+          }
+
+          // (2) 전공 계열 매칭
+          if (course.majorTypes.includes("etc") || course.majorTypes.includes(majorType)) {
+            score += 3;
+          }
+
+          // (3) 관심 분야 태그 겹치기
+          const overlap = course.tags.filter(t => interests.includes(t));
+          score += overlap.length * 2;
+
+          // (4) 난이도 선호 매칭
+          if (difficultyPref === "easy" && course.difficulty <= 2) score += 3;
+          if (difficultyPref === "normal" && course.difficulty === 3) score += 3;
+          if (difficultyPref === "hard" && course.difficulty >= 4) score += 3;
+
+          // (5) 기본 가중치 (너무 동점 많을 때를 대비)
+          score += 1;
+
+          return { course, score };
+        })
+        .filter(item => item !== null)
+        .sort((a, b) => b.score - a.score)
+        .slice(0, 5); // 상위 5개만 반환
+    }
+
+    // 4. 결과 렌더링
+    function renderResult(answers, recommended) {
+      const resultDiv = document.getElementById("result");
+
+      if (recommended.length === 0) {
+        resultDiv.innerHTML = `
+          <h2>추천 결과</h2>
+          <p>조건에 딱 맞는 과목을 찾지 못했어요. 한국어 수준이나 난이도 선호를 조금 바꿔서 다시 시도해 보세요.</p>
+        `;
+        return;
+      }
+
+      const itemsHtml = recommended.map(item => {
+        const c = item.course;
+        const tagsHtml = c.tags.map(t => `<span class="badge">${t}</span>`).join("");
+        return `
+          <div class="course-card">
+            <h3>${c.name}</h3>
+            <p>${c.desc}</p>
+            <p>
+              <span class="badge">TOPIK ${c.koreanLevel}급 전후</span>
+              <span class="badge">난이도 ${c.difficulty}/5</span>
+              ${tagsHtml}
+            </p>
+            <p style="font-size: 13px; color: #666;">
+              추천 점수: ${item.score}
+            </p>
+          </div>
+        `;
+      }).join("");
+
+      resultDiv.innerHTML = `
+        <h2>추천 결과</h2>
+        <p>입력한 응답을 바탕으로 아래 과목들을 추천합니다.</p>
+        ${itemsHtml}
+      `;
+    }
+  </script>
+</body>
+</html>
