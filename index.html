@@ -1,125 +1,113 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>Course Recommendation System for International Students</title>
+  <title>리케이온 교양 과목 추천 시스템</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Personalized course recommendation system for Lykeion international students" />
+  <meta name="description" content="리케이온 유학생을 위한 맞춤 교양 과목 추천" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
   <div class="header-section">
     <div class="header-icon">📚</div>
-    <h1>Find Your Perfect Course</h1>
-    <p class="subtitle">Personalized course recommendations for Lykeion international students</p>
-    <span class="header-chip">🎯 Simple survey to find courses that match your Korean language level</span>
+    <h1>교양 과목 추천 시스템</h1>
+    <p class="subtitle">리케이온 유학생 맞춤형 과목 찾기</p>
+    <span class="header-chip">🎯 간단한 3개 질문으로 나에게 맞는 과목 찾기</span>
   </div>
 
   <form id="survey-form">
+    <!-- 기본 정보 -->
     <fieldset>
-      <legend>🌐 1. Overall Korean Language Level</legend>
-      <label for="koreanLevel">Please select your overall Korean language proficiency</label>
-      <select name="koreanLevel" id="koreanLevel">
-        <option value="초급">🌱 Beginner (초급)</option>
-        <option value="중급A" selected>📗 Intermediate A (중급A)</option>
-        <option value="중급B">📘 Intermediate B (중급B)</option>
-        <option value="중고급">📙 Upper-Intermediate (중고급)</option>
-        <option value="고급">📕 Advanced (고급)</option>
-      </select>
+      <legend>📝 기본 정보</legend>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="major">전공</label>
+          <input type="text" name="major" id="major" placeholder="예: 컴퓨터공학" required>
+        </div>
+        <div class="form-group">
+          <label for="studentId">학번</label>
+          <input type="text" name="studentId" id="studentId" placeholder="예: 20240001" required>
+        </div>
+      </div>
     </fieldset>
 
+    <!-- 질문 1: 한국어 수준 -->
     <fieldset>
-      <legend>👂 2. Listening Skills</legend>
-      <label for="listening">What level of Korean listening skills are required for this course?</label>
-      <select name="listening" id="listening">
-        <option value="1">⭐ 1 (Very Low)</option>
-        <option value="2" selected>⭐⭐ 2 (Low)</option>
-        <option value="3">⭐⭐⭐ 3 (Medium)</option>
-        <option value="4">⭐⭐⭐⭐ 4 (High)</option>
-      </select>
+      <legend>🌐 1. 당신의 한국어 수준은 무엇입니까?</legend>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="koreanLevel" value="초급" required>
+          <span class="radio-custom">🌱 초급</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="koreanLevel" value="중급" checked>
+          <span class="radio-custom">📗 중급</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="koreanLevel" value="중고급">
+          <span class="radio-custom">📙 중고급</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="koreanLevel" value="고급">
+          <span class="radio-custom">📕 고급</span>
+        </label>
+      </div>
     </fieldset>
 
+    <!-- 질문 2: 원하는 분야 -->
     <fieldset>
-      <legend>💬 3. Speaking Skills</legend>
-      <label for="speaking">What level of Korean speaking skills are required for this course?</label>
-      <select name="speaking" id="speaking">
-        <option value="1">⭐ 1 (Very Low)</option>
-        <option value="2" selected>⭐⭐ 2 (Medium)</option>
-        <option value="3">⭐⭐⭐ 3 (High)</option>
-        <option value="4">⭐⭐⭐⭐ 4 (Very High)</option>
-      </select>
+      <legend>🎨 2. 당신이 원하는 수업은 어떤 분야입니까? (복수 선택 가능)</legend>
+      <div class="checkbox-group">
+        <label class="checkbox-label">
+          <input type="checkbox" name="field" value="인간과 가치">
+          <span class="checkbox-custom">🤔 인간과 가치</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="field" value="문화와 표현">
+          <span class="checkbox-custom">🎭 문화와 표현</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="field" value="사회와 세상">
+          <span class="checkbox-custom">💼 사회와 세상</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="field" value="과학과 기술">
+          <span class="checkbox-custom">🔬 과학과 기술</span>
+        </label>
+        <label class="checkbox-label">
+          <input type="checkbox" name="field" value="삶과 건강">
+          <span class="checkbox-custom">💪 삶과 건강</span>
+        </label>
+      </div>
     </fieldset>
 
+    <!-- 질문 3: 상호작용 -->
     <fieldset>
-      <legend>📖 4. Reading Skills</legend>
-      <label for="reading">What level of Korean reading skills are required for this course?</label>
-      <select name="reading" id="reading">
-        <option value="1">⭐ 1 (Very Low)</option>
-        <option value="2" selected>⭐⭐ 2 (Medium)</option>
-        <option value="3">⭐⭐⭐ 3 (High)</option>
-        <option value="4">⭐⭐⭐⭐ 4 (Very High)</option>
-      </select>
+      <legend>👥 3. 당신은 수업 중 한국학생과 적극적인 상호작용을 원합니까?</legend>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="interaction" value="Y" required>
+          <span class="radio-custom">👫 네</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="interaction" value="N">
+          <span class="radio-custom">🧘 아니오</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="interaction" value="any" checked>
+          <span class="radio-custom">🤷 상관없음</span>
+        </label>
+      </div>
     </fieldset>
 
-    <fieldset>
-      <legend>✍️ 5. Writing Skills</legend>
-      <label for="writing">What level of Korean writing skills are required for this course?</label>
-      <select name="writing" id="writing">
-        <option value="1">⭐ 1 (Very Low)</option>
-        <option value="2" selected>⭐⭐ 2 (Medium)</option>
-        <option value="3">⭐⭐⭐ 3 (High)</option>
-        <option value="4">⭐⭐⭐⭐ 4 (Very High)</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>📄 6. Course Materials Provided in Advance</legend>
-      <label for="materialProvided">Do you need course materials provided in advance?</label>
-      <select name="materialProvided" id="materialProvided">
-        <option value="any">🤷 Either is fine</option>
-        <option value="Y">✅ Yes, I need them</option>
-        <option value="N">❌ No, I don't need them</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>🇰🇷 7. Korean Culture/History Content</legend>
-      <label for="culturalContent">Would you like a course that covers Korean culture or history?</label>
-      <select name="culturalContent" id="culturalContent">
-        <option value="any">🤷 Either is fine</option>
-        <option value="전혀 다루지않음">🌍 No cultural content needed</option>
-        <option value="일부 다룸">🏯 Some cultural content</option>
-        <option value="대부분 다룸">🎎 Mostly cultural content</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>👥 8. Student Interaction</legend>
-      <label for="interaction">Would you like a course with discussions or group work?</label>
-      <select name="interaction" id="interaction">
-        <option value="any">🤷 Either is fine</option>
-        <option value="Y">👫 Yes, I'd like interaction</option>
-        <option value="N">🧘 No, I prefer independent work</option>
-      </select>
-    </fieldset>
-
-    <fieldset>
-      <legend>🎨 9. Areas of Interest (Multiple selection allowed)</legend>
-      <label><input type="checkbox" name="interest" value="문화와 표현"> 🎭 Culture & Expression</label>
-      <label><input type="checkbox" name="interest" value="인간과 윤리"> 🤔 Human & Ethics</label>
-      <label><input type="checkbox" name="interest" value="삶과 건강"> 💪 Life & Health</label>
-      <label><input type="checkbox" name="interest" value="역사와 이론"> 📜 History & Theory</label>
-      <label><input type="checkbox" name="interest" value="사회와 경제"> 💼 Society & Economy</label>
-    </fieldset>
-
-    <button type="submit">🔍 Find My Perfect Courses</button>
+    <button type="submit">🔍 추천 과목 보기</button>
   </form>
 
   <div id="result"></div>
 
   <script>
     // ========================================
-    // EMBEDDED COURSE DATA
+    // 과목 데이터 (임베디드)
     // ========================================
     const COURSES = [
       { NO: "1", category: "문화와 표현", name: "리얼리스틱글쓰기", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "윤희진" },
@@ -135,7 +123,7 @@
       { NO: "11", category: "인간과 윤리", name: "래퍼런스시리즈_한강", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
       { NO: "12", category: "인간과 윤리", name: "래퍼런스시리즈_무라카미하루키", koreanLevel: "중고급", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
       { NO: "13", category: "인간과 윤리", name: "자기발견과소통", koreanLevel: "중급B", listening: "2", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
-      { NO: "14", category: "인간과 윤리/역사와 이론", name: "책읽기와생각나누기", koreanLevel: "고급", listening: "4", speaking: "4", reading: "3", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "윤희진" },
+      { NO: "14", category: "인간과 윤리", name: "책읽기와생각나누기", koreanLevel: "고급", listening: "4", speaking: "4", reading: "3", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "윤희진" },
       { NO: "15", category: "인간과 윤리", name: "자기발견과소통", koreanLevel: "중급B", listening: "2", speaking: "2", reading: "2", writing: "3", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "N", professor: "윤희진" },
       { NO: "16", category: "문화와 표현", name: "혼자라도괜찮은일본문화기행", koreanLevel: "초급", listening: "2", speaking: "1", reading: "1", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "김재용" },
       { NO: "17", category: "인간과 윤리", name: "생명과책임윤리", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "김현화" },
@@ -145,7 +133,7 @@
       { NO: "21", category: "사회와 경제", name: "우리시대의독서론", koreanLevel: "고급", listening: "4", speaking: "4", reading: "2", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "윤희진" },
       { NO: "22", category: "인간과 윤리", name: "독서캐릭터만들기", koreanLevel: "중고급", listening: "4", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
       { NO: "23", category: "문화와 표현", name: "CK_TED Talks", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "김재용" },
-      { NO: "24", category: "인간과 윤리/문화와 표현", name: "창의성과소셜미디어", koreanLevel: "중고급", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "윤희진" },
+      { NO: "24", category: "인간과 윤리", name: "창의성과소셜미디어", koreanLevel: "중고급", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "윤희진" },
       { NO: "25", category: "사회와 경제", name: "문화예술과동아시아인문학", koreanLevel: "중고급", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "홍성진" },
       { NO: "26", category: "인간과 윤리", name: "창의성과독서토론", koreanLevel: "중고급", listening: "3", speaking: "2", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김영" },
       { NO: "27", category: "삶과 건강", name: "생명과책임윤리", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "박민" },
@@ -176,119 +164,99 @@
     ];
 
     // ========================================
-    // RECOMMENDATION LOGIC
+    // 카테고리 → 분야 매핑
     // ========================================
-    function getRecommendedCourses(answer) {
-      const {
-        koreanLevel, listening, speaking, reading, writing,
-        materialProvided, culturalContent, interaction, interests
-      } = answer;
+    const CATEGORY_TO_FIELD = {
+      "인간과 윤리": "인간과 가치",
+      "문화와 표현": "문화와 표현",
+      "사회와 경제": "사회와 세상",
+      "역사와 이론": "사회와 세상",
+      "삶과 건강": "삶과 건강"
+    };
 
-      const WEIGHTS = {
-        KOREAN_LEVEL_MATCH: 10,
-        SKILL_MATCH: 3,
-        MATERIAL_MATCH: 2,
-        CULTURAL_MATCH: 2,
-        INTERACTION_MATCH: 2,
-        INTEREST_MATCH: 5
-      };
+    // ========================================
+    // 한국어 수준별 필터링 매핑
+    // ========================================
+    const KOREAN_LEVEL_FILTER = {
+      "초급": ["초급", "중급A"],
+      "중급": ["초급", "중급A", "중급B"],
+      "중고급": ["초급", "중급A", "중급B", "중고급"],
+      "고급": ["초급", "중급A", "중급B", "중고급", "고급"]
+    };
 
-      const MAX_RESULTS = 10;
-      const levelOrder = ['초급', '중급A', '중급B', '중고급', '고급'];
+    // ========================================
+    // 추천 로직
+    // ========================================
+    function getRecommendedCourses(answers) {
+      const { koreanLevel, fields, interaction } = answers;
 
-      return COURSES
-        .map(course => {
-          let score = 0;
+      // 한국어 수준 필터링
+      const allowedLevels = KOREAN_LEVEL_FILTER[koreanLevel];
 
-          const userLevelIndex = levelOrder.indexOf(koreanLevel);
-          const courseLevelIndex = levelOrder.indexOf(course.koreanLevel);
+      let filtered = COURSES.filter(course => {
+        // 1. 한국어 수준 체크
+        if (!allowedLevels.includes(course.koreanLevel)) {
+          return false;
+        }
 
-          if (courseLevelIndex <= userLevelIndex) {
-            score += WEIGHTS.KOREAN_LEVEL_MATCH * (1 + (userLevelIndex - courseLevelIndex) * 0.2);
-          } else if (courseLevelIndex - userLevelIndex === 1) {
-            score += WEIGHTS.KOREAN_LEVEL_MATCH * 0.5;
-          } else {
-            return null;
+        // 2. 분야 체크 (복수 선택 가능, 선택 안 했으면 모두 포함)
+        if (fields.length > 0) {
+          const courseField = CATEGORY_TO_FIELD[course.category] || course.category;
+          if (!fields.includes(courseField)) {
+            return false;
           }
+        }
 
-          const courseListening = parseInt(course.listening, 10);
-          const courseSpeaking = parseInt(course.speaking, 10);
-          const courseReading = parseInt(course.reading, 10);
-          const courseWriting = parseInt(course.writing, 10);
+        // 3. 상호작용 체크
+        if (interaction !== 'any' && course.interaction !== interaction) {
+          return false;
+        }
 
-          if (listening >= courseListening) score += WEIGHTS.SKILL_MATCH * (1 + (listening - courseListening) * 0.3);
-          if (speaking >= courseSpeaking) score += WEIGHTS.SKILL_MATCH * (1 + (speaking - courseSpeaking) * 0.3);
-          if (reading >= courseReading) score += WEIGHTS.SKILL_MATCH * (1 + (reading - courseReading) * 0.3);
-          if (writing >= courseWriting) score += WEIGHTS.SKILL_MATCH * (1 + (writing - courseWriting) * 0.3);
+        return true;
+      });
 
-          if (materialProvided === 'any' || materialProvided === course.materialProvided) {
-            score += WEIGHTS.MATERIAL_MATCH;
-          }
-
-          if (culturalContent === 'any' || culturalContent === course.culturalContent) {
-            score += WEIGHTS.CULTURAL_MATCH;
-          }
-
-          if (interaction === 'any' || interaction === course.interaction) {
-            score += WEIGHTS.INTERACTION_MATCH;
-          }
-
-          if (interests.length > 0 && interests.includes(course.category)) {
-            score += WEIGHTS.INTEREST_MATCH;
-          } else if (interests.length === 0) {
-            score += 1;
-          }
-
-          return { course, score };
-        })
-        .filter(item => item !== null)
-        .sort((a, b) => b.score - a.score)
-        .slice(0, MAX_RESULTS);
+      return filtered;
     }
 
     // ========================================
-    // UI RENDERING
+    // 결과 렌더링
     // ========================================
     function renderResult(answers, recommended) {
       const resultDiv = document.getElementById("result");
 
       if (recommended.length === 0) {
         resultDiv.innerHTML = `
-          <h2>🔍 Recommendation Results</h2>
-          <p>We couldn't find courses that perfectly match your criteria. Please try adjusting your Korean language level or other preferences.</p>
+          <h2>🔍 추천 결과</h2>
+          <p>조건에 맞는 과목을 찾지 못했습니다. 다른 조건으로 다시 시도해보세요.</p>
         `;
         return;
       }
 
-      const categoryIcons = {
+      const fieldIcons = {
+        "인간과 가치": "🤔",
         "문화와 표현": "🎭",
-        "인간과 윤리": "🤔",
-        "삶과 건강": "💪",
-        "역사와 이론": "📜",
-        "사회와 경제": "💼"
+        "사회와 세상": "💼",
+        "과학과 기술": "🔬",
+        "삶과 건강": "💪"
       };
 
-      const itemsHtml = recommended.map((item, index) => {
-        const c = item.course;
+      const itemsHtml = recommended.map((course, index) => {
         const rank = index + 1;
-        const categoryIcon = categoryIcons[c.category.split('/')[0]] || "📚";
+        const field = CATEGORY_TO_FIELD[course.category] || course.category;
+        const fieldIcon = fieldIcons[field] || "📚";
 
         return `
           <div class="course-card">
             <div class="course-header">
-              <span class="rank-badge">#${rank}</span>
+              <span class="rank-badge">${rank}</span>
               <div class="course-title-section">
-                <h3 class="course-name">${c.name}</h3>
+                <h3 class="course-name">${course.name}</h3>
                 <div class="course-meta">
                   <span class="meta-item">
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                      <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                      <circle cx="12" cy="7" r="4"></circle>
-                    </svg>
-                    ${c.professor}
+                    👨‍🏫 ${course.professor}
                   </span>
                   <span class="meta-item">
-                    ${categoryIcon} ${c.category}
+                    ${fieldIcon} ${field}
                   </span>
                 </div>
               </div>
@@ -297,36 +265,17 @@
             <div class="course-details">
               <div class="detail-grid">
                 <div class="detail-item">
-                  <span class="detail-label">🌐 Korean Level</span>
-                  <span class="detail-value">${c.koreanLevel}</span>
+                  <span class="detail-label">한국어 수준</span>
+                  <span class="detail-value">${course.koreanLevel}</span>
                 </div>
                 <div class="detail-item">
-                  <span class="detail-label">👂 Listening</span>
-                  <span class="detail-value">${'⭐'.repeat(parseInt(c.listening))}</span>
+                  <span class="detail-label">상호작용</span>
+                  <span class="detail-value">${course.interaction === 'Y' ? '있음' : '없음'}</span>
                 </div>
                 <div class="detail-item">
-                  <span class="detail-label">💬 Speaking</span>
-                  <span class="detail-value">${'⭐'.repeat(parseInt(c.speaking))}</span>
+                  <span class="detail-label">자료 사전제공</span>
+                  <span class="detail-value">${course.materialProvided === 'Y' ? '예' : '아니오'}</span>
                 </div>
-                <div class="detail-item">
-                  <span class="detail-label">📖 Reading</span>
-                  <span class="detail-value">${'⭐'.repeat(parseInt(c.reading))}</span>
-                </div>
-                <div class="detail-item">
-                  <span class="detail-label">✍️ Writing</span>
-                  <span class="detail-value">${'⭐'.repeat(parseInt(c.writing))}</span>
-                </div>
-              </div>
-
-              <div class="feature-tags">
-                ${c.materialProvided === 'Y' ? '<span class="feature-tag">📄 Materials Provided</span>' : ''}
-                ${c.culturalContent !== '전혀 다루지않음' ? `<span class="feature-tag">🇰🇷 ${c.culturalContent}</span>` : ''}
-                ${c.interaction === 'Y' ? '<span class="feature-tag">👥 Group Work</span>' : ''}
-              </div>
-
-              <div class="score-section">
-                <span class="score-label">Match Score</span>
-                <span class="score-value">${Math.round(item.score)} points</span>
               </div>
             </div>
           </div>
@@ -334,14 +283,71 @@
       }).join("");
 
       resultDiv.innerHTML = `
-        <h2>✨ Recommended Courses for You</h2>
-        <p class="result-summary">We found <strong>${recommended.length} courses</strong> that match your preferences!</p>
+        <div class="result-header">
+          <h2>✨ 추천 과목</h2>
+          <p class="result-summary">총 <strong>${recommended.length}개</strong>의 과목이 추천되었습니다.</p>
+          <button id="downloadBtn" class="download-btn">💾 결과 저장 (TXT)</button>
+        </div>
         ${itemsHtml}
       `;
+
+      // 다운로드 버튼 이벤트
+      document.getElementById('downloadBtn').addEventListener('click', () => {
+        downloadResultAsText(answers, recommended);
+      });
     }
 
     // ========================================
-    // FORM HANDLING
+    // TXT 파일 다운로드
+    // ========================================
+    function downloadResultAsText(answers, recommended) {
+      const timestamp = new Date().toLocaleString('ko-KR');
+
+      let content = `===========================================\n`;
+      content += `    리케이온 교양 과목 추천 결과\n`;
+      content += `===========================================\n\n`;
+      content += `생성 일시: ${timestamp}\n\n`;
+
+      content += `[기본 정보]\n`;
+      content += `전공: ${answers.major}\n`;
+      content += `학번: ${answers.studentId}\n\n`;
+
+      content += `[응답 내용]\n`;
+      content += `1. 한국어 수준: ${answers.koreanLevel}\n`;
+      content += `2. 원하는 분야: ${answers.fields.length > 0 ? answers.fields.join(', ') : '선택 안 함'}\n`;
+      content += `3. 상호작용: ${answers.interaction === 'Y' ? '예' : answers.interaction === 'N' ? '아니오' : '상관없음'}\n\n`;
+
+      content += `[추천 과목 - 총 ${recommended.length}개]\n`;
+      content += `-------------------------------------------\n\n`;
+
+      recommended.forEach((course, index) => {
+        const field = CATEGORY_TO_FIELD[course.category] || course.category;
+        content += `${index + 1}. ${course.name}\n`;
+        content += `   - 분야: ${field}\n`;
+        content += `   - 교수: ${course.professor}\n`;
+        content += `   - 한국어 수준: ${course.koreanLevel}\n`;
+        content += `   - 상호작용: ${course.interaction === 'Y' ? '있음' : '없음'}\n`;
+        content += `   - 자료 사전제공: ${course.materialProvided === 'Y' ? '예' : '아니오'}\n\n`;
+      });
+
+      content += `===========================================\n`;
+
+      // 파일 다운로드
+      const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = `교과목추천_${answers.studentId}_${Date.now()}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+
+      alert('추천 결과가 TXT 파일로 저장되었습니다!');
+    }
+
+    // ========================================
+    // 폼 제출 처리
     // ========================================
     function initializeSurveyForm() {
       const form = document.getElementById("survey-form");
@@ -349,21 +355,20 @@
       form.addEventListener("submit", function(e) {
         e.preventDefault();
 
+        const major = form.major.value.trim();
+        const studentId = form.studentId.value.trim();
         const koreanLevel = form.koreanLevel.value;
-        const listening = parseInt(form.listening.value, 10);
-        const speaking = parseInt(form.speaking.value, 10);
-        const reading = parseInt(form.reading.value, 10);
-        const writing = parseInt(form.writing.value, 10);
-        const materialProvided = form.materialProvided.value;
-        const culturalContent = form.culturalContent.value;
         const interaction = form.interaction.value;
 
-        const interestNodes = form.querySelectorAll('input[name="interest"]:checked');
-        const interests = Array.from(interestNodes).map(i => i.value);
+        const fieldNodes = form.querySelectorAll('input[name="field"]:checked');
+        const fields = Array.from(fieldNodes).map(n => n.value);
 
         const answers = {
-          koreanLevel, listening, speaking, reading, writing,
-          materialProvided, culturalContent, interaction, interests
+          major,
+          studentId,
+          koreanLevel,
+          fields,
+          interaction
         };
 
         const recommended = getRecommendedCourses(answers);
@@ -374,11 +379,11 @@
     }
 
     // ========================================
-    // INITIALIZATION
+    // 초기화
     // ========================================
     document.addEventListener('DOMContentLoaded', function() {
       initializeSurveyForm();
-      console.log(`✅ ${COURSES.length} courses loaded successfully!`);
+      console.log(`✅ ${COURSES.length}개 과목 데이터 로드 완료`);
     });
   </script>
 </body>
