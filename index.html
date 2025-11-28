@@ -334,7 +334,8 @@
       }
 
       try {
-        const courseNames = recommended.map(item => item.course.name).join(', ');
+        // recommended는 직접 과목 객체 배열입니다
+        const courseNames = recommended.map(course => course.name).join(', ');
 
         const data = {
           major: answers.major,
