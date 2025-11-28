@@ -321,8 +321,15 @@ button[type="submit"]:active {
   border-bottom: 2px solid #e2e8f0;
 }
 
-.download-btn {
+.action-buttons {
+  display: flex;
+  align-items: center;
+  gap: 16px;
   margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.download-btn {
   padding: 10px 20px;
   border: none;
   border-radius: 8px;
@@ -342,6 +349,18 @@ button[type="submit"]:active {
 
 .download-btn:active {
   transform: translateY(0);
+}
+
+.save-indicator {
+  display: inline-flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  color: #6b7280;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
 }
 
 @keyframes fadeIn {

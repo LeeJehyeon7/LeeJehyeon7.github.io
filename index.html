@@ -107,6 +107,13 @@
 
   <script>
     // ========================================
+    // Google Sheets 설정 (선택사항)
+    // ========================================
+    // Google Apps Script 웹 앱 URL을 여기에 입력하세요
+    // 설정 방법은 google-apps-script.js 파일 참고
+    const GOOGLE_SCRIPT_URL = 'https://docs.google.com/spreadsheets/d/1V7bZGUxQEHSMOtXz3VI20ymsaTaN6dUpK2D3vjafgsg/edit?usp=sharing'; // 예: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+
+    // ========================================
     // 과목 데이터 (임베디드)
     // ========================================
     const COURSES = [
@@ -286,15 +293,74 @@
         <div class="result-header">
           <h2>✨ 추천 과목</h2>
           <p class="result-summary">총 <strong>${recommended.length}개</strong>의 과목이 추천되었습니다.</p>
-          <button id="downloadBtn" class="download-btn">💾 결과 저장 (TXT)</button>
+          <div class="action-buttons">
+            <button id="downloadBtn" class="download-btn">💾 결과 저장 (TXT)</button>
+            ${GOOGLE_SCRIPT_URL ? '<span class="save-indicator" id="saveIndicator">📊 온라인 저장 중...</span>' : ''}
+          </div>
         </div>
         ${itemsHtml}
       `;
+
+      // Google Sheets에 자동 저장 (URL이 설정된 경우)
+      if (GOOGLE_SCRIPT_URL) {
+        saveToGoogleSheets(answers, recommended).then(success => {
+          const indicator = document.getElementById('saveIndicator');
+          if (indicator) {
+            indicator.textContent = '✅ 온라인 저장 완료';
+            indicator.style.color = '#10b981';
+          }
+        }).catch(error => {
+          const indicator = document.getElementById('saveIndicator');
+          if (indicator) {
+            indicator.textContent = '⚠️ 온라인 저장 실패 (로컬 저장만 가능)';
+            indicator.style.color = '#f59e0b';
+          }
+        });
+      }
 
       // 다운로드 버튼 이벤트
       document.getElementById('downloadBtn').addEventListener('click', () => {
         downloadResultAsText(answers, recommended);
       });
+    }
+
+    // ========================================
+    // Google Sheets로 데이터 전송
+    // ========================================
+    async function saveToGoogleSheets(answers, recommended) {
+      if (!GOOGLE_SCRIPT_URL) {
+        console.log('Google Sheets URL이 설정되지 않았습니다.');
+        return false;
+      }
+
+      try {
+        const courseNames = recommended.map(item => item.course.name).join(', ');
+
+        const data = {
+          major: answers.major,
+          studentId: answers.studentId,
+          koreanLevel: answers.koreanLevel,
+          fields: answers.fields,
+          interaction: answers.interaction,
+          recommendedCount: recommended.length,
+          recommendedCourses: courseNames
+        };
+
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Google Apps Script는 CORS 제한이 있음
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        });
+
+        console.log('✅ Google Sheets 저장 요청 전송됨');
+        return true;
+      } catch (error) {
+        console.error('❌ Google Sheets 저장 실패:', error);
+        return false;
+      }
     }
 
     // ========================================

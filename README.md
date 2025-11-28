@@ -1,29 +1,86 @@
-# 리케이온 교양 과목 추천 시스템
+# 📚 리케이온 교양 과목 추천 시스템
 
-리케이온 유학생을 위한 맞춤형 교양 과목 추천 웹 애플리케이션입니다.
+유학생을 위한 맞춤형 교양 과목 추천 웹 애플리케이션
+
+## 🎯 주요 기능
+
+### 1. 간편한 3단계 추천
+- **Q1**: 한국어 수준 (초급/중급/중고급/고급)
+- **Q2**: 원하는 분야 (복수 선택 가능)
+- **Q3**: 학생 간 상호작용 선호도
+
+### 2. 정확한 필터링
+- 한국어 수준별 맞춤 추천
+  - 초급 → 초급, 중급A
+  - 중급 → 초급, 중급A, 중급B
+  - 중고급 → 초급, 중급A, 중급B, 중고급
+  - 고급 → 모든 수준
+- 분야별 필터링
+- 상호작용 여부 필터링
+
+### 3. 데이터 저장 (2가지 방법)
+
+#### 📥 로컬 저장 (기본)
+- TXT 파일로 다운로드
+- 오프라인에서도 작동
+- 파일명: `교과목추천_[학번]_[타임스탬프].txt`
+
+#### ☁️ 온라인 저장 (선택사항)
+- Google Sheets 자동 연동
+- 실시간 데이터 누적
+- 데이터 분석 및 시각화 가능
+- **설정 방법**: [SETUP_GOOGLE_SHEETS.md](SETUP_GOOGLE_SHEETS.md) 참고 ⭐
+
+## 🚀 빠른 시작
+
+### 로컬 실행
+```bash
+# 1. 파일 다운로드
+git clone https://github.com/leejehyeon7/Recommand.git
+
+# 2. index.html을 웹 브라우저에서 열기
+open index.html
+```
+
+### GitHub Pages 배포
+현재 배포 URL: `https://leejehyeon7.github.io/Recommand/`
 
 ## 📁 프로젝트 구조
 
 ```
-jinny/
-├── index.html         # 메인 HTML 페이지
-├── styles.css         # 스타일시트
-├── app.js             # JavaScript 로직
-├── courses_new.csv    # 과목 데이터 (업데이트 대상) ⭐
-└── README.md          # 프로젝트 문서
+course-recommender/
+├── index.html                 # 메인 HTML (데이터 임베디드)
+├── styles.css                 # 스타일시트
+├── google-apps-script.js      # Google Apps Script (참고용)
+├── SETUP_GOOGLE_SHEETS.md     # Google Sheets 설정 가이드 ⭐
+├── README.md                  # 이 파일
+├── courses.csv.backup         # 원본 백업
+└── courses_new.csv            # 원본 데이터 (참고용)
 ```
 
-## 🚀 GitHub Pages 배포
+## 📊 Google Sheets 온라인 저장 설정
 
-이 프로젝트는 `https://leejehyeon7.github.io/Recommand/`에 배포되어 있습니다.
+온라인에서 추천 결과를 자동으로 저장하려면:
 
-**중요**: `courses.csv` 파일이 깨졌으므로 `courses_new.csv` 파일을 사용합니다.
+1. [상세 설정 가이드](SETUP_GOOGLE_SHEETS.md) 확인 ⭐
+2. Google Apps Script 배포 (5-10분 소요)
+3. `index.html`의 `GOOGLE_SCRIPT_URL` 설정
+4. 완료! GitHub Pages에서 자동 저장 시작
 
-변경사항을 GitHub Pages에 반영하려면:
+### 저장되는 데이터
+- 제출 시간
+- 전공, 학번
+- 한국어 수준
+- 선택한 분야
+- 상호작용 선호도
+- 추천 과목 수
+- 추천 과목 목록
 
-1. `courses_new.csv` 파일 업데이트
-2. GitHub에 커밋 및 푸시
-3. 자동으로 반영됩니다
+### 활용 방법
+- 실시간 데이터 모니터링
+- 통계 분석 및 차트 생성
+- Excel/CSV로 내보내기
+- 학기별 데이터 관리
 
 ## 📝 과목 데이터 업데이트 방법
 
