@@ -135,7 +135,7 @@
     // ========================================
     // Google Apps Script 웹 앱 URL을 여기에 입력하세요
     // 설정 방법은 google-apps-script.js 파일 참고
-    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwDRfGaMPTl3Co91suioSpHTyLc1oBFw8Ak-2iZri2pB5I5IleDq_abG5jAqG7IFOo/exec'; // 예: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwuzDJ_1HLPpNHHpFsUKtGRFXapw9MzwMu-l7Muzu7oCdBaFlVDOHTfDoVM6Bd1HTAl/exec'; // 예: 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec'
 
     // ========================================
     // 과목 데이터 (임베디드)
@@ -403,6 +403,17 @@
         // recommended는 직접 과목 객체 배열입니다
         const courseNames = recommended.map(course => course.name).join(', ');
 
+        // 사용자 기기 정보 수집
+        const deviceInfo = {
+          userAgent: navigator.userAgent,
+          platform: navigator.platform,
+          language: navigator.language,
+          screenResolution: `${window.screen.width}x${window.screen.height}`,
+          viewportSize: `${window.innerWidth}x${window.innerHeight}`,
+          timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
+          deviceType: /Mobile|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ? 'Mobile' : 'Desktop'
+        };
+
         const data = {
           major: answers.major,
           studentId: answers.studentId,
@@ -410,7 +421,15 @@
           fields: answers.fields,
           interaction: answers.interaction,
           recommendedCount: recommended.length,
-          recommendedCourses: courseNames
+          recommendedCourses: courseNames,
+          // 기기 정보 추가
+          userAgent: deviceInfo.userAgent,
+          platform: deviceInfo.platform,
+          language: deviceInfo.language,
+          screenResolution: deviceInfo.screenResolution,
+          viewportSize: deviceInfo.viewportSize,
+          timezone: deviceInfo.timezone,
+          deviceType: deviceInfo.deviceType
         };
 
         const response = await fetch(GOOGLE_SCRIPT_URL, {

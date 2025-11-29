@@ -25,12 +25,23 @@ function doPost(e) {
         '원하는 분야',
         '상호작용',
         '추천 과목 수',
-        '추천 과목 목록'
+        '추천 과목 목록',
+        'IP 주소',
+        'User Agent',
+        '플랫폼',
+        '언어',
+        '화면 해상도',
+        '뷰포트 크기',
+        '타임존',
+        '기기 유형'
       ]);
     }
 
     // POST 데이터 파싱
     const data = JSON.parse(e.postData.contents);
+
+    // 요청자의 IP 주소 가져오기 (Google Apps Script에서 제공)
+    const ipAddress = e.parameter.userip || 'Unknown';
 
     // 데이터 행 추가
     sheet.appendRow([
@@ -41,7 +52,15 @@ function doPost(e) {
       data.fields.join(', ') || '선택 안 함',
       data.interaction === 'Y' ? '예' : data.interaction === 'N' ? '아니오' : '상관없음',
       data.recommendedCount || 0,
-      data.recommendedCourses || ''
+      data.recommendedCourses || '',
+      ipAddress,
+      data.userAgent || '',
+      data.platform || '',
+      data.language || '',
+      data.screenResolution || '',
+      data.viewportSize || '',
+      data.timezone || '',
+      data.deviceType || ''
     ]);
 
     // 성공 응답
