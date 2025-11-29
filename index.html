@@ -45,20 +45,39 @@
       <legend>🌐 1. 당신의 한국어 수준은 무엇입니까?</legend>
       <div class="radio-group">
         <label class="radio-label">
-          <input type="radio" name="koreanLevel" value="초급" required>
-          <span class="radio-custom">🌱 초급</span>
+          <input type="radio" name="koreanLevel" value="TOPIK3급(초급)" required>
+          <span class="radio-custom radio-custom-twoline">
+            <span class="radio-grade">🌱 TOPIK3급</span>
+            <span class="radio-level">(초급)</span>
+          </span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="koreanLevel" value="중급" checked>
-          <span class="radio-custom">📗 중급</span>
+          <input type="radio" name="koreanLevel" value="TOPIK4급(중급A)" checked>
+          <span class="radio-custom radio-custom-twoline">
+            <span class="radio-grade">📗 TOPIK4급</span>
+            <span class="radio-level">(중급A)</span>
+          </span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="koreanLevel" value="중고급">
-          <span class="radio-custom">📙 중고급</span>
+          <input type="radio" name="koreanLevel" value="TOPIK4급(중급B)">
+          <span class="radio-custom radio-custom-twoline">
+            <span class="radio-grade">📘 TOPIK4급</span>
+            <span class="radio-level">(중급B)</span>
+          </span>
         </label>
         <label class="radio-label">
-          <input type="radio" name="koreanLevel" value="고급">
-          <span class="radio-custom">📕 고급</span>
+          <input type="radio" name="koreanLevel" value="TOPIK5급(중고급)">
+          <span class="radio-custom radio-custom-twoline">
+            <span class="radio-grade">📙 TOPIK5급</span>
+            <span class="radio-level">(중고급)</span>
+          </span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="koreanLevel" value="TOPIK6급(고급)">
+          <span class="radio-custom radio-custom-twoline">
+            <span class="radio-grade">📕 TOPIK6급</span>
+            <span class="radio-level">(고급)</span>
+          </span>
         </label>
       </div>
     </fieldset>
@@ -126,57 +145,57 @@
     // 과목 데이터 (임베디드)
     // ========================================
     const COURSES = [
-      { NO: "1", category: "문화와 표현", name: "재미있는글쓰기", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김윤경" },
-      { NO: "2", category: "문화와 표현", name: "일본미디어오감체험", koreanLevel: "중급A", listening: "1", speaking: "3", reading: "2", writing: "1", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "김미선" },
-      { NO: "3", category: "인간과 가치", name: "대인관계심리학", koreanLevel: "중급B", listening: "2", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "최윤희" },
-      { NO: "4", category: "인간과 가치", name: "치유로써의미술", koreanLevel: "중급B", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "최지우" },
-      { NO: "5", category: "인간과 가치", name: "더나은삶을위한심리학", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "이민수" },
-      { NO: "6", category: "삶과 건강", name: "몸마음챙김명상", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "류지명" },
-      { NO: "7", category: "과학과 미래", name: "인물로보는과학의역사", koreanLevel: "중급B", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "김경화" },
-      { NO: "8", category: "문화와 표현", name: "물성의미학", koreanLevel: "중급B", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "유미" },
-      { NO: "9", category: "인간과 가치", name: "대인관계심리학", koreanLevel: "중급B", listening: "2", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "소현숙" },
-      { NO: "10", category: "삶과 건강", name: "알렉산더테크닉", koreanLevel: "중급A", listening: "3", speaking: "2", reading: "1", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "김대훈" },
-      { NO: "11", category: "인간과 가치", name: "레퍼런스시리즈_루쉰", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
-      { NO: "12", category: "인간과 가치", name: "레퍼런스시리즈_서사의위기", koreanLevel: "중고급", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
-      { NO: "13", category: "인간과 가치", name: "자기발견과소통", koreanLevel: "중급B", listening: "2", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진" },
-      { NO: "14", category: "인간과 가치", name: "과학시대,철학하기", koreanLevel: "고급", listening: "4", speaking: "4", reading: "3", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "서민정" },
-      { NO: "15", category: "인간과 가치", name: "자기발견과소통", koreanLevel: "중급B", listening: "2", speaking: "2", reading: "2", writing: "3", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "N", professor: "서민정" },
-      { NO: "16", category: "문화와 표현", name: "혼자떠나는일본자유여행", koreanLevel: "초급", listening: "2", speaking: "1", reading: "1", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "이주영" },
-      { NO: "17", category: "인간과 가치", name: "몸마음챙김명상", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "강화" },
-      { NO: "18", category: "삶과 건강", name: "오감느낌숲명상", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "강화" },
-      { NO: "19", category: "문화와 표현", name: "합창", koreanLevel: "초급", listening: "2", speaking: "1", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "제갈윤" },
-      { NO: "20", category: "문화와 표현", name: "문화로만나는중국어", koreanLevel: "중급A", listening: "2", speaking: "1", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "김향림" },
-      { NO: "21", category: "사회와 세상", name: "우리가사는세계", koreanLevel: "고급", listening: "4", speaking: "4", reading: "2", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "박혜성" },
-      { NO: "22", category: "인간과 가치", name: "문학속캐릭터만나기", koreanLevel: "중고급", listening: "4", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "최혜자" },
-      { NO: "23", category: "문화와 표현", name: "CK_TED Talks", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "유우열" },
-      { NO: "24", category: "인간과 가치", name: "창작자를위한소시오드라마", koreanLevel: "중고급", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "강주현" },
-      { NO: "25", category: "사회와 세상", name: "슬기로운경제생활", koreanLevel: "중고급", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "홍명헌" },
-      { NO: "26", category: "인간과 가치", name: "창작자를위한인문학", koreanLevel: "중고급", listening: "3", speaking: "2", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김영" },
-      { NO: "27", category: "삶과 건강", name: "몸마음챙김명상", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김현" },
-      { NO: "28", category: "사회와 세상", name: "재미있는법이야기", koreanLevel: "중급B", listening: "3", speaking: "1", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "임호균" },
-      { NO: "29", category: "인간과 가치", name: "창작자를위한꿈작업", koreanLevel: "중고급", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "강경희" },
-      { NO: "30", category: "문화와 표현", name: "동양요괴대백과", koreanLevel: "중급B", listening: "2", speaking: "1", reading: "2", writing: "1", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "오윤형" },
-      { NO: "31", category: "문화와 표현", name: "예술,인문학으로보다", koreanLevel: "중고급", listening: "3", speaking: "2", reading: "3", writing: "3", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "오윤형" },
-      { NO: "32", category: "문화와 표현", name: "치유로써의미술", koreanLevel: "중급B", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "정소연" },
-      { NO: "33", category: "문화와 표현", name: "영화,만약에", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "김태희" },
-      { NO: "34", category: "사회와 세상", name: "레퍼런스시리즈_유발하라리", koreanLevel: "중고급", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진" },
-      { NO: "35", category: "문화와 표현", name: "레퍼런스시리즈_셰익스피어", koreanLevel: "중급A", listening: "2", speaking: "1", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "권민성" },
-      { NO: "36", category: "사회와 세상", name: "레퍼런스시리즈_총균쇠", koreanLevel: "중고급", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진" },
-      { NO: "37", category: "인간과 가치", name: "생각의역사", koreanLevel: "고급", listening: "4", speaking: "3", reading: "3", writing: "3", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진" },
-      { NO: "38", category: "인간과 가치", name: "신화와스토리텔링", koreanLevel: "중급B", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진" },
-      { NO: "39", category: "삶과 건강", name: "신체활동을통한팀빌딩", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "유재상" },
-      { NO: "40", category: "삶과 건강", name: "신체활동을통한팀빌딩", koreanLevel: "초급", listening: "2", speaking: "1", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "양재웅" },
-      { NO: "41", category: "인간과 가치", name: "레퍼런스시리즈_그대들어떻게살것인가", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "이주영" },
-      { NO: "42", category: "과학과 미래", name: "과학적사고와상상력", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "김경화" },
-      { NO: "43", category: "문화와 표현", name: "세상의모든음악", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "박혜성" },
-      { NO: "44", category: "문화와 표현", name: "영화,만약에", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "N", professor: "권민성" },
-      { NO: "45", category: "삶과 건강", name: "몸으로배우는자기관리", koreanLevel: "초급", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "유재상" },
-      { NO: "46", category: "인간과 가치", name: "캐릭터분석과자기이해", koreanLevel: "중급B", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "강주현" },
-      { NO: "47", category: "인간과 가치", name: "동양고전의숲", koreanLevel: "고급", listening: "3", speaking: "3", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "강경희" },
-      { NO: "48", category: "인간과 가치", name: "레퍼런스시리즈_한강", koreanLevel: "중급B", listening: "2", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "Y", professor: "윤희진" },
-      { NO: "49", category: "인간과 가치", name: "레퍼런스시리즈_그리스비극", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "서민정" },
-      { NO: "50", category: "문화와 표현", name: "처음만나는문화다양성", koreanLevel: "중급A", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "윤희진" },
-      { NO: "51", category: "사회와 세상", name: "역사콘텐츠와의대화", koreanLevel: "고급", listening: "3", speaking: "3", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "곽희정" }
+      { NO: "1", category: "문화와 표현", name: "재미있는글쓰기", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김윤경", description: "다양한 미디어 속 텍스트를 새로운 시선과 감각으로 경험하며 글쓰기의 자유로움과 재미를 발견하는 수업", url: "https://cafe.naver.com/ckhive/34806", teachingMethod: "이론, 체험" },
+      { NO: "2", category: "문화와 표현", name: "일본미디어오감체험", koreanLevel: "TOPIK4급(중급A)", listening: "1", speaking: "3", reading: "2", writing: "1", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "김미선", description: "영상 속 일본문화코드를 읽는 재미, 여기에 다 있어요!", url: "https://cafe.naver.com/ckhive/34807", teachingMethod: "이론" },
+      { NO: "3", category: "인간과 가치", name: "대인관계심리학", koreanLevel: "TOPIK4급(중급B)", listening: "2", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "최윤희", description: "자신과의 만남, 타인과의 연결됨을 통해 관계의 어려움을 함께 풀어가며 행복한 대인관계의 기술을 찾고 발견하는 대인관계 연습장", url: "https://cafe.naver.com/ckhive/34833", teachingMethod: "이론, 팀활동" },
+      { NO: "4", category: "인간과 가치", name: "치유로써의미술", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "최지우", description: "어린 시절처럼 친구들과 미술을 즐기고 심리 회복과 치유를 돕는, 나를 위한 따뜻한 힐링 시간", url: "https://cafe.naver.com/ckhive/34834", teachingMethod: "이론, 팀활동, 체험" },
+      { NO: "5", category: "인간과 가치", name: "더나은삶을위한심리학", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "이민수", description: "심리학 지식을 배움으로써 나만의 '심리 렌즈'를 얻고, 그 렌즈로 일상의 삶을 들여다보는 심리학 수업", url: "https://cafe.naver.com/ckhive/34841", teachingMethod: "이론" },
+      { NO: "6", category: "삶과 건강", name: "몸마음챙김명상", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "류지명", description: "다양한 마음챙김 기법(몀상, 요가, 바디스캔)을 통해 자신의 몸과 마음을 알아차리고 조절하는 방법을 찾아가는 수업", url: "https://cafe.naver.com/ckhive/34840", teachingMethod: "체험" },
+      { NO: "7", category: "과학과 미래", name: "인물로보는과학의역사", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "김경화", description: "과학자를 통해 과학과 사회의 흐름을 이해하고 나의 레퍼런스로 활용하는 수업", url: "https://cafe.naver.com/ckhive/34808", teachingMethod: "이론, 체험" },
+      { NO: "8", category: "문화와 표현", name: "물성의미학", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "유미", description: "사물의 물성을 탐색하며 아름다움을 발견하는 과정으로, 창작자에게 영감을 찾는 창작 훈련을 제공하는 수업", url: "https://cafe.naver.com/ckhive/34815", teachingMethod: "팀활동, 체험" },
+      { NO: "9", category: "인간과 가치", name: "대인관계심리학", koreanLevel: "TOPIK4급(중급B)", listening: "2", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "소현숙", description: "자신과의 만남, 타인과의 연결됨을 통해 관계의 어려움을 함께 풀어가며 행복한 대인관계의 기술을 찾고 발견하는 대인관계 연습장", url: "https://cafe.naver.com/ckhive/34833", teachingMethod: "이론, 팀활동" },
+      { NO: "10", category: "삶과 건강", name: "알렉산더테크닉", koreanLevel: "TOPIK4급(중급A)", listening: "3", speaking: "2", reading: "1", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "김대훈", description: "호흡, 감각, 자세, 움직임을 통해 불필요한 긴장을 해소하고, 몸과 마음이 자연스러운 상태로 회복될 수 있도록 돕는 수업", url: "https://cafe.naver.com/ckhive/34838", teachingMethod: "이론, 체험" },
+      { NO: "11", category: "인간과 가치", name: "레퍼런스시리즈_루쉰", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진", description: "소설가 루쉰 따라 읽기! 시대 정신을 창작물에 센스있게 담아내는 법이 궁금하다면?", url: "https://cafe.naver.com/ckhive/34826", teachingMethod: "이론, 팀활동" },
+      { NO: "12", category: "인간과 가치", name: "레퍼런스시리즈_서사의위기", koreanLevel: "TOPIK5급(중고급)", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진", description: "숏폼, SNS 시대에 나만의 서사를 탄탄하게 만들어가려면 어떻게 해야 할지 탐구하는 수업", url: "https://cafe.naver.com/ckhive/34825", teachingMethod: "이론, 팀활동" },
+      { NO: "13", category: "인간과 가치", name: "자기발견과소통", koreanLevel: "TOPIK4급(중급B)", listening: "2", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "윤희진", description: "주제별로 다양한 글 읽기와 성찰 활동을 통해 '나다움'을 발견하고 내 삶의 방향과 가치에 대해 '함께' 생각하고 나누는 수업", url: "https://cafe.naver.com/ckhive/34830", teachingMethod: "팀활동, 체험" },
+      { NO: "14", category: "인간과 가치, 과학과 미래", name: "과학시대,철학하기", koreanLevel: "TOPIK6급(고급)", listening: "4", speaking: "4", reading: "3", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "서민정", description: "기계는 생각하고 사람은 검색하고?' 과학시대, 꼭 질문해봐야 할 현대사회의 이슈들에 대해 생각하고 나의 언어를 찾아가는 시간", url: "https://cafe.naver.com/ckhive/34820", teachingMethod: "이론, 팀활동" },
+      { NO: "15", category: "인간과 가치", name: "자기발견과소통", koreanLevel: "TOPIK4급(중급B)", listening: "2", speaking: "2", reading: "2", writing: "3", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "N", professor: "서민정", description: "주제별로 다양한 글 읽기와 성찰 활동을 통해 '나다움'을 발견하고 내 삶의 방향과 가치에 대해 '함께' 생각하고 나누는 수업", url: "https://cafe.naver.com/ckhive/34830", teachingMethod: "이론, 체험" },
+      { NO: "16", category: "문화와 표현", name: "혼자떠나는일본자유여행", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "1", reading: "1", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "이주영", description: "여행을 통해 창작자에게 필요한 낯선 풍경을 바라보는 감각을 키우는 시간", url: "https://cafe.naver.com/ckhive/34803", teachingMethod: "이론" },
+      { NO: "17", category: "인간과 가치", name: "몸마음챙김명상", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "강화", description: "다양한 마음챙김 기법(몀상, 요가, 바디스캔)을 통해 자신의 몸과 마음을 알아차리고 조절하는 방법을 찾아가는 수업", url: "https://cafe.naver.com/ckhive/34840", teachingMethod: "체험" },
+      { NO: "18", category: "삶과 건강", name: "오감느낌숲명상", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "강화", description: "자연에서 감각기관을 통한 순간의 경험에 주의를 두고 알아차리며, 자기 자원을 확장하고 자기이해의 폭을 넓히는 수업", url: "https://cafe.naver.com/ckhive/34837", teachingMethod: "체험" },
+      { NO: "19", category: "문화와 표현", name: "합창", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "1", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "제갈윤", description: "나의 목소리로 타인과 함께 마음을 맞춰 좋은 소리로 만들어가는 수업", url: "https://cafe.naver.com/ckhive/34828", teachingMethod: "체험" },
+      { NO: "20", category: "문화와 표현", name: "문화로만나는중국어", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "1", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "김향림", description: "하늘을 나는 무협 고수들이 사는 세상, 신선과 인간의 사랑, 맛있는 중국 요리! 중국 문화에 숨어있는 재미있는 이야기를 캐내는 수업", url: "https://cafe.naver.com/ckhive/34816", teachingMethod: "이론, 팀활동" },
+      { NO: "21", category: "사회와 세상", name: "우리가사는세계", koreanLevel: "TOPIK6급(고급)", listening: "4", speaking: "4", reading: "2", writing: "3", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "N", professor: "박혜성", description: "우리는 어디에서 왔고, 우리는 누구이며, 우리는 어디로 가는가? 역사 속 인물을 통해 현재 우리가 사는 세계를 이해해보는 수업", url: "https://cafe.naver.com/ckhive/34809", teachingMethod: "이론" },
+      { NO: "22", category: "인간과 가치", name: "문학속캐릭터만나기", koreanLevel: "TOPIK5급(중고급)", listening: "4", speaking: "3", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "최혜자 ", description: "들어만봤던 고전문학 작품들을 읽고 그 속의 흥미로운 캐릭터들을 제대로 알아가는 시간", url: "https://cafe.naver.com/ckhive/34817", teachingMethod: "이론" },
+      { NO: "23", category: "문화와 표현", name: "CK_TED Talks", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "유우열", description: "공감과 지지를 이끌어내는 소통이란 무엇인가? 세상을 바꾸는 아이디어를 배우는 시간", url: "https://cafe.naver.com/ckhive/34821", teachingMethod: "팀활동" },
+      { NO: "24", category: "인간과 가치, 문화와 표현", name: "창작자를위한소시오드라마", koreanLevel: "TOPIK5급(중고급)", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "강주현", description: "사회적 이슈부터 개인적 경험까지, 다양한 이야기를 탐색하고 역할 속에서 직접 체험하는 표현력과 상상력을 확장하는 체험형 수업", url: "https://cafe.naver.com/ckhive/34829", teachingMethod: "이론, 팀활동, 체험" },
+      { NO: "25", category: "사회와 세상", name: "슬기로운경제생활", koreanLevel: "TOPIK5급(중고급)", listening: "3", speaking: "3", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "홍명헌", description: "금융을 모르면 경제생활이 어려워진다. 보다 풍요로운 인생을 위한 첫걸음 수업", url: "https://cafe.naver.com/ckhive/34839", teachingMethod: "이론, 체험" },
+      { NO: "26", category: "인간과 가치", name: "창작자를위한인문학", koreanLevel: "TOPIK5급(중고급)", listening: "3", speaking: "2", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김영", description: "스토리텔링을 통한 넓고 얕은 인문학 속성 과정", url: "https://cafe.naver.com/ckhive/34804", teachingMethod: "이론" },
+      { NO: "27", category: "삶과 건강", name: "몸마음챙김명상", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "김현", description: "다양한 마음챙김 기법(몀상, 요가, 바디스캔)을 통해 자신의 몸과 마음을 알아차리고 조절하는 방법을 찾아가는 수업", url: "https://cafe.naver.com/ckhive/34840", teachingMethod: "체험" },
+      { NO: "28", category: "사회와 세상", name: "재미있는법이야기", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "1", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "임호균 ", description: "알아두면 동무되는 생활밀착형 법률 수업 청년을 위한 생존형 실전법률 가이드", url: "https://cafe.naver.com/ckhive/34805", teachingMethod: "이론" },
+      { NO: "29", category: "인간과 가치", name: "창작자를위한꿈작업", koreanLevel: "TOPIK5급(중고급)", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "강경희", description: "매일 밤 꾸는 꿈을 서로 나누고 꿈으로 상상놀이를 하면서 자신과 세계에 대한 새로운 통찰과 창작에 대한 영감을 얻는 수업", url: "https://cafe.naver.com/ckhive/34835", teachingMethod: "이론, 팀활동, 체험" },
+      { NO: "30", category: "문화와 표현", name: "동양요괴대백과", koreanLevel: "TOPIK4급(중급B)", listening: "2", speaking: "1", reading: "2", writing: "1", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "오윤형", description: "한중일의 미술사와 다양한 요괴 이야기를 통해 시대와 인간의 내면세계를 들여다보는 상상력 탐구 수업", url: "https://cafe.naver.com/ckhive/34818", teachingMethod: "이론" },
+      { NO: "31", category: "문화와 표현", name: "예술,인문학으로보다", koreanLevel: "TOPIK5급(중고급)", listening: "3", speaking: "2", reading: "3", writing: "3", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "오윤형", description: "서양미술사를 개괄하면서 작품을 통해 인간과 시대를 이야기하는 인문학적 감상 수업", url: "https://cafe.naver.com/ckhive/34810", teachingMethod: "이론" },
+      { NO: "32", category: "문화와 표현", name: "치유로써의미술", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "N", professor: "정소연", description: "어린 시절처럼 친구들과 미술을 즐기고 심리 회복과 치유를 돕는, 나를 위한 따뜻한 힐링 시간", url: "https://cafe.naver.com/ckhive/34834", teachingMethod: "이론, 팀활동, 체험" },
+      { NO: "33", category: "문화와 표현", name: "영화,만약에", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "김태희", description: "창작자에게 최적회된 영화를 통한 성찰 인문학", url: "https://cafe.naver.com/ckhive/34811", teachingMethod: "이론, 팀활동" },
+      { NO: "34", category: "사회와 세상", name: "레퍼런스시리즈_유발하라리", koreanLevel: "TOPIK5급(중고급)", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진", description: "유발하라리의 인류3부작을 통해 과거부터 미래까지 정리하며 나만의 창의적 세계관을 설계하는 수업", url: "https://cafe.naver.com/ckhive/34823", teachingMethod: "이론" },
+      { NO: "35", category: "문화와 표현", name: "레퍼런스시리즈_셰익스피어", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "1", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "권민성", description: "다양한 매체 속에서 셰익스피어의 작품이 어떻게 재탄생했는지 살펴보고, 자신만의 시선으로 셰익스피어를 다시 해석하는 수업", url: "https://cafe.naver.com/ckhive/34824", teachingMethod: "이론, 체험" },
+      { NO: "36", category: "사회와 세상", name: "레퍼런스시리즈_총균쇠", koreanLevel: "TOPIK5급(중고급)", listening: "4", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진", description: "책 \"총균쇠\"를 통해 인류 문명의 불평등 원인을 지리적, 환경적 관점에서 이해하는 빅히스토리 수업", url: "https://cafe.naver.com/ckhive/34822", teachingMethod: "이론" },
+      { NO: "37", category: "인간과 가치", name: "생각의역사", koreanLevel: "TOPIK6급(고급)", listening: "4", speaking: "3", reading: "3", writing: "3", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진", description: "생각의 주인이 될 것인가, 노예가 될 것인가? 지혜로운 삶을 위한 인생의 필수 과목", url: "https://cafe.naver.com/ckhive/34814", teachingMethod: "이론" },
+      { NO: "38", category: "인간과 가치", name: "신화와스토리텔링", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "N", professor: "임동진", description: "이카루스의 날개를 타고 창의적 상상과 영감의 원더랜드로 당신을 데려다 줄 수업", url: "https://cafe.naver.com/ckhive/34812", teachingMethod: "이론" },
+      { NO: "39", category: "삶과 건강", name: "신체활동을통한팀빌딩", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "Y", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "유재상", description: "남녀노소 누구나 참여할 수 있는 팀 중심 신체활동을 통해 자연스럽게 팀워크와 협동심을 배우는 수업", url: "https://cafe.naver.com/ckhive/34831", teachingMethod: "팀활동, 체험" },
+      { NO: "40", category: "삶과 건강", name: "신체활동을통한팀빌딩", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "1", reading: "1", writing: "1", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "양재웅", description: "남녀노소 누구나 참여할 수 있는 팀 중심 신체활동을 통해 자연스럽게 팀워크와 협동심을 배우는 수업", url: "https://cafe.naver.com/ckhive/34831", teachingMethod: "팀활동, 체험" },
+      { NO: "41", category: "인간과 가치", name: "레퍼런스시리즈_그대들어떻게살것인가", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "이주영", description: "함께 읽고, 말하고, 쓰면서 '내가 어떤 살마인지'를 알아가고 '나는 어떻게 살고 싶은지'를 찾아가는 시간", url: "https://cafe.naver.com/ckhive/34827", teachingMethod: "팀활동" },
+      { NO: "42", category: "과학과 미래", name: "과학적사고와상상력", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "N", professor: "김경화", description: "간단한 과학 이슈를 통해 과학적인 사고 과정을 실현해보고 그에 연관된 나만의 상상력을 발휘하여 콘텐츠를 구성해보는 수업", url: "https://cafe.naver.com/ckhive/34819", teachingMethod: "이론, 체험" },
+      { NO: "43", category: "문화와 표현", name: "세상의모든음악", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "일부 다룸", interaction: "N", professor: "박혜성", description: "세상에는 이런 음악도 있답니다. 음악과 그 뒷 이야기를 알아볼까요?", url: "https://cafe.naver.com/ckhive/34813", teachingMethod: "이론" },
+      { NO: "44", category: "문화와 표현", name: "영화,만약에", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "N", professor: "권민성", description: "창작자에게 최적회된 영화를 통한 성찰 인문학", url: "https://cafe.naver.com/ckhive/34811", teachingMethod: "이론, 팀활동" },
+      { NO: "45", category: "삶과 건강", name: "몸으로배우는자기관리", koreanLevel: "TOPIK3급(초급)", listening: "2", speaking: "2", reading: "1", writing: "1", materialProvided: "N", culturalContent: "일부 다룸", interaction: "Y", professor: "유재상", description: "신체활동을 기반으로 생활밀착형 운동에 대한 원리를 배워 올바른 건강관리 습관 형성 능력을 키우는 실천형 교양 수업", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 체험" },
+      { NO: "46", category: "인간과 가치", name: "캐릭터분석과자기이해", koreanLevel: "TOPIK4급(중급B)", listening: "3", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "강주현", description: "다양한 콘텐츠 속 캐릭터를 심리적으로 분석하고, 이를 바탕으로 자기 자신을 성찰하는 과정을 다루는 교과목입니다. ", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 팀활동, 체험" },
+      { NO: "47", category: "인간과 가치", name: "동양고전의숲", koreanLevel: "TOPIK6급(고급)", listening: "3", speaking: "3", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "강경희", description: "동양 고전에서 소재와 영감을 얻어 작품을 창작하는 능력을 기르는 수업", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 팀활동" },
+      { NO: "48", category: "인간과 가치", name: "레퍼런스시리즈_한강", koreanLevel: "TOPIK4급(중급B)", listening: "2", speaking: "2", reading: "3", writing: "2", materialProvided: "N", culturalContent: "대부분 다룸", interaction: "Y", professor: "윤희진", description: "소설가 한강의 삶과 시대 경험이 어떻게 폭력과 기억, 침묵과 저항이라는 문학적 상상력으로 전환되는지 탐구하는 수업", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 팀활동" },
+      { NO: "49", category: "인간과 가치", name: "레퍼런스시리즈_그리스비극", koreanLevel: "TOPIK5급(중고급)", listening: "3", speaking: "2", reading: "3", writing: "3", materialProvided: "N", culturalContent: "전혀 다루지않음", interaction: "Y", professor: "서민정", description: "오이디푸스'와 '안티고네'를 읽고 다양한 극적 활동을 통해 그리스 비극의 서사 구조와 철학적 주제를 탐구하는 토론 수업", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 팀활동" },
+      { NO: "50", category: "문화와 표현", name: "처음만나는문화다양성", koreanLevel: "TOPIK4급(중급A)", listening: "2", speaking: "2", reading: "2", writing: "2", materialProvided: "Y", culturalContent: "일부 다룸", interaction: "Y", professor: "윤희진", description: "일상생활에서 만나는 다양한 문화를 탐구하고, 차이를 이해하며 포용력을 키우는 수업", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 팀활동, 체험" },
+      { NO: "51", category: "사회와 세상", name: "역사콘텐츠와의대화", koreanLevel: "TOPIK6급(고급)", listening: "3", speaking: "3", reading: "3", writing: "3", materialProvided: "Y", culturalContent: "대부분 다룸", interaction: "Y", professor: "곽희정", description: "디지털 역사학에 기반하여 영화, 게임, 애니메이션, 드라마, 다큐, 뮤지컬 등에 활용할 수 있는 역사문화콘텐츠를 기획하고 개발하기 위한 기초 교양 지식을 함양하는 수업", url: "https://cafe.naver.com/ckhive", teachingMethod: "이론, 팀활동" }
     ];
 
     // ========================================
@@ -191,13 +210,14 @@
     };
 
     // ========================================
-    // 한국어 수준별 필터링 매핑
+    // 한국어 수준별 필터링 매핑 (TOPIK 형식)
     // ========================================
     const KOREAN_LEVEL_FILTER = {
-      "초급": ["초급", "중급A"],
-      "중급": ["초급", "중급A", "중급B"],
-      "중고급": ["초급", "중급A", "중급B", "중고급"],
-      "고급": ["초급", "중급A", "중급B", "중고급", "고급"]
+      "TOPIK3급(초급)": ["TOPIK3급(초급)", "TOPIK4급(중급A)"],
+      "TOPIK4급(중급A)": ["TOPIK3급(초급)", "TOPIK4급(중급A)", "TOPIK4급(중급B)"],
+      "TOPIK4급(중급B)": ["TOPIK3급(초급)", "TOPIK4급(중급A)", "TOPIK4급(중급B)", "TOPIK5급(중고급)"],
+      "TOPIK5급(중고급)": ["TOPIK3급(초급)", "TOPIK4급(중급A)", "TOPIK4급(중급B)", "TOPIK5급(중고급)"],
+      "TOPIK6급(고급)": ["TOPIK3급(초급)", "TOPIK4급(중급A)", "TOPIK4급(중급B)", "TOPIK5급(중고급)", "TOPIK6급(고급)"]
     };
 
     // ========================================
@@ -217,8 +237,13 @@
 
         // 2. 분야 체크 (복수 선택 가능, 선택 안 했으면 모두 포함)
         if (fields.length > 0) {
-          const courseField = CATEGORY_TO_FIELD[course.category] || course.category;
-          if (!fields.includes(courseField)) {
+          // 쉼표로 구분된 카테고리를 배열로 분리하여 처리
+          const courseCategories = course.category.split(',').map(cat => cat.trim());
+          const courseFields = courseCategories.map(cat => CATEGORY_TO_FIELD[cat] || cat);
+
+          // 선택한 분야 중 하나라도 과목의 분야와 일치하면 포함
+          const hasMatchingField = courseFields.some(field => fields.includes(field));
+          if (!hasMatchingField) {
             return false;
           }
         }
@@ -256,9 +281,27 @@
         "삶과 건강": "💪"
       };
 
+      // 스킬 레벨 막대 생성 함수
+      const createSkillBar = (level, skillType) => {
+        const maxLevel = 4;
+        const filled = parseInt(level);
+        let bars = '';
+        for (let i = 1; i <= maxLevel; i++) {
+          bars += `<span class="skill-bar skill-${skillType} ${i <= filled ? 'filled' : 'empty'}"></span>`;
+        }
+        return bars;
+      };
+
       const itemsHtml = recommended.map((course, index) => {
-        const field = CATEGORY_TO_FIELD[course.category] || course.category;
-        const fieldIcon = fieldIcons[field] || "📚";
+        // 쉼표로 구분된 카테고리를 배열로 분리하여 처리
+        const courseCategories = course.category.split(',').map(cat => cat.trim());
+        const courseFields = courseCategories.map(cat => CATEGORY_TO_FIELD[cat] || cat);
+
+        // 여러 분야가 있는 경우 모두 표시
+        const fieldDisplay = courseFields.map(field => {
+          const fieldIcon = fieldIcons[field] || "📚";
+          return `${fieldIcon} ${field}`;
+        }).join(' / ');
 
         return `
           <div class="course-card">
@@ -270,7 +313,7 @@
                     👨‍🏫 ${course.professor}
                   </span>
                   <span class="meta-item">
-                    ${fieldIcon} ${field}
+                    ${fieldDisplay}
                   </span>
                 </div>
               </div>
@@ -283,10 +326,22 @@
                   <span class="detail-value">
                     ${course.koreanLevel}
                     <div class="skill-levels">
-                      <span class="skill-item">👂 듣기 ${course.listening}</span>
-                      <span class="skill-item">💬 말하기 ${course.speaking}</span>
-                      <span class="skill-item">📖 읽기 ${course.reading}</span>
-                      <span class="skill-item">✍️ 쓰기 ${course.writing}</span>
+                      <span class="skill-item">
+                        <span class="skill-label">👂 듣기</span>
+                        <span class="skill-bars">${createSkillBar(course.listening, 'listening')}</span>
+                      </span>
+                      <span class="skill-item">
+                        <span class="skill-label">💬 말하기</span>
+                        <span class="skill-bars">${createSkillBar(course.speaking, 'speaking')}</span>
+                      </span>
+                      <span class="skill-item">
+                        <span class="skill-label">📖 읽기</span>
+                        <span class="skill-bars">${createSkillBar(course.reading, 'reading')}</span>
+                      </span>
+                      <span class="skill-item">
+                        <span class="skill-label">✍️ 쓰기</span>
+                        <span class="skill-bars">${createSkillBar(course.writing, 'writing')}</span>
+                      </span>
                     </div>
                   </span>
                 </div>
@@ -297,6 +352,26 @@
                 <div class="detail-item">
                   <span class="detail-label">자료 사전제공</span>
                   <span class="detail-value">${course.materialProvided === 'Y' ? '예' : '아니오'}</span>
+                </div>
+              </div>
+
+              <div class="course-description">
+                <div class="description-label">📝 교과목 소개</div>
+                <p class="description-text">${course.description}</p>
+              </div>
+
+              <div class="course-extra-info">
+                <div class="info-item">
+                  <span class="info-label">🔗 과목 URL</span>
+                  <a href="${course.url}" target="_blank" rel="noopener noreferrer" class="course-link">${course.url}</a>
+                </div>
+                <div class="info-item">
+                  <span class="info-label">📚 수업방법</span>
+                  <div class="teaching-methods">
+                    ${course.teachingMethod.split(',').map(method =>
+                      `<span class="method-tag">${method.trim()}</span>`
+                    ).join('')}
+                  </div>
                 </div>
               </div>
             </div>
@@ -384,9 +459,13 @@
       content += `-------------------------------------------\n\n`;
 
       recommended.forEach((course, index) => {
-        const field = CATEGORY_TO_FIELD[course.category] || course.category;
+        // 쉼표로 구분된 카테고리를 배열로 분리하여 처리
+        const courseCategories = course.category.split(',').map(cat => cat.trim());
+        const courseFields = courseCategories.map(cat => CATEGORY_TO_FIELD[cat] || cat);
+        const fieldDisplay = courseFields.join(' / ');
+
         content += `${index + 1}. ${course.name}\n`;
-        content += `   - 분야: ${field}\n`;
+        content += `   - 분야: ${fieldDisplay}\n`;
         content += `   - 교수: ${course.professor}\n`;
         content += `   - 한국어 수준: ${course.koreanLevel}\n`;
         content += `   - 상호작용: ${course.interaction === 'Y' ? '있음' : '없음'}\n`;

@@ -176,6 +176,26 @@ fieldset:hover {
   background: white;
 }
 
+/* 한국어 수준 라디오 버튼 2줄 표시 */
+.radio-custom-twoline {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 12px;
+}
+
+.radio-grade {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #2d3748;
+}
+
+.radio-level {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: #718096;
+}
+
 .radio-label:hover .radio-custom {
   border-color: #cbd5e0;
   transform: translateY(-2px);
@@ -517,13 +537,62 @@ button[type="submit"]:active {
 
 .skill-item {
   display: inline-flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 3px;
   padding: 3px 6px;
   background: #f7fafc;
   border-radius: 4px;
   color: #4a5568;
   white-space: nowrap;
   font-size: 0.7rem;
+}
+
+.skill-label {
+  font-size: 0.65rem;
+  color: #64748b;
+}
+
+.skill-bars {
+  display: flex;
+  gap: 2px;
+  align-items: center;
+}
+
+.skill-bar {
+  display: inline-block;
+  width: 4px;
+  height: 12px;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* 듣기 - 파스텔 블루 */
+.skill-bar.skill-listening.filled {
+  background: linear-gradient(135deg, #a8d8ea 0%, #7ec8e3 100%);
+  box-shadow: 0 1px 2px rgba(126, 200, 227, 0.3);
+}
+
+/* 말하기 - 파스텔 핑크 */
+.skill-bar.skill-speaking.filled {
+  background: linear-gradient(135deg, #ffb3ba 0%, #ffaec0 100%);
+  box-shadow: 0 1px 2px rgba(255, 174, 192, 0.3);
+}
+
+/* 읽기 - 파스텔 그린 */
+.skill-bar.skill-reading.filled {
+  background: linear-gradient(135deg, #b4e7ce 0%, #95dab6 100%);
+  box-shadow: 0 1px 2px rgba(149, 218, 182, 0.3);
+}
+
+/* 쓰기 - 파스텔 퍼플 */
+.skill-bar.skill-writing.filled {
+  background: linear-gradient(135deg, #d4b5e8 0%, #c5a3dd 100%);
+  box-shadow: 0 1px 2px rgba(197, 163, 221, 0.3);
+}
+
+.skill-bar.empty {
+  background: #e2e8f0;
 }
 
 /* 특징 태그 */
@@ -585,6 +654,96 @@ button[type="submit"]:active {
   0%, 20% { content: '.'; }
   40% { content: '..'; }
   60%, 100% { content: '...'; }
+}
+
+/* 교과목 소개 섹션 */
+.course-description {
+  margin-top: 16px;
+  padding: 16px;
+  background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 5%, #fff 100%);
+  border-left: 4px solid #667eea;
+  border-radius: 8px;
+}
+
+.description-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 8px;
+}
+
+.description-text {
+  font-size: 0.9rem;
+  color: #475569;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* 추가 정보 섹션 */
+.course-extra-info {
+  margin-top: 16px;
+  padding: 16px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.info-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #64748b;
+}
+
+.course-link {
+  font-size: 0.85rem;
+  color: #667eea;
+  text-decoration: none;
+  word-break: break-all;
+  transition: all 0.2s ease;
+  padding: 8px 12px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  border: 1px solid #e2e8f0;
+}
+
+.course-link:hover {
+  color: #5a67d8;
+  background: #e0e7ff;
+  border-color: #c7d2fe;
+  text-decoration: underline;
+}
+
+.teaching-methods {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.method-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+  color: #92400e;
+  font-size: 0.8rem;
+  font-weight: 500;
+  border-radius: 999px;
+  border: 1px solid #fcd34d;
+  transition: all 0.2s ease;
+}
+
+.method-tag:hover {
+  background: linear-gradient(135deg, #fde68a 0%, #fcd34d 100%);
+  transform: scale(1.05);
 }
 
 /* 반응형 디자인 */
@@ -668,6 +827,36 @@ button[type="submit"]:active {
     padding: 2px 5px;
     font-size: 0.65rem;
   }
+
+  .skill-label {
+    font-size: 0.6rem;
+  }
+
+  .skill-bar {
+    width: 3px;
+    height: 10px;
+  }
+
+  .course-description {
+    padding: 12px;
+  }
+
+  .description-label {
+    font-size: 0.8rem;
+  }
+
+  .description-text {
+    font-size: 0.85rem;
+  }
+
+  .course-extra-info {
+    padding: 12px;
+  }
+
+  .method-tag {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -681,5 +870,27 @@ button[type="submit"]:active {
 
   .detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .course-description {
+    padding: 10px;
+  }
+
+  .description-text {
+    font-size: 0.8rem;
+  }
+
+  .course-extra-info {
+    padding: 10px;
+  }
+
+  .course-link {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
+  .method-tag {
+    font-size: 0.7rem;
+    padding: 4px 8px;
   }
 }
