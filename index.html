@@ -41,7 +41,7 @@
         <div class="form-group">
           <label for="studentId">학번</label>
           <input type="text" name="studentId" id="studentId" placeholder="예: 20240001"
-                 pattern="[0-9]{4,8}"
+                 pattern="[0-9]{9}"
                  inputmode="numeric"
                  required>
         </div>
@@ -356,7 +356,7 @@
                   <span class="detail-value">${course.interaction === 'Y' ? '많음' : '적음'}</span>
                 </div>
                 <div class="detail-item">
-                  <span class="detail-label">자료 사전제공</span>
+                  <span class="detail-label">강의자료 사전제공</span>
                   <span class="detail-value">${course.materialProvided === 'Y' ? '예' : '아니오'}</span>
                 </div>
               </div>
@@ -512,7 +512,7 @@
         content += `   - 교수: ${course.professor}\n`;
         content += `   - 한국어 수준: ${course.koreanLevel}\n`;
         content += `   - 상호작용: ${course.interaction === 'Y' ? '있음' : '없음'}\n`;
-        content += `   - 자료 사전제공: ${course.materialProvided === 'Y' ? '예' : '아니오'}\n\n`;
+        content += `   - 강의자료 사전제공: ${course.materialProvided === 'Y' ? '예' : '아니오'}\n\n`;
       });
 
       content += `===========================================\n`;
