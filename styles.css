@@ -11,8 +11,8 @@ body {
   margin: 0 auto;
   padding: 24px;
   line-height: 1.6;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
-  color: #1a202c;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  color: #212529;
   min-height: 100vh;
 }
 
@@ -21,14 +21,14 @@ body {
   text-align: center;
   margin-bottom: 40px;
   padding: 40px 20px;
-  background: linear-gradient(135deg, #FF6C02 0%, #FF8C42 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   border-radius: 20px;
-  box-shadow: 0 8px 16px rgba(255, 108, 2, 0.25);
+  box-shadow: 0 10px 30px rgba(124, 58, 237, 0.25);
   position: relative;
   overflow: hidden;
 }
 
-/* ?�더 컨테?�너 - 로고?� 콘텐�?배치 */
+/* ?�더 컨테?�너 - 로고?�?콘텐�?배치 */
 .header-container {
   display: flex;
   align-items: center;
@@ -119,24 +119,24 @@ h1 {
 
 /* ???��???*/
 #survey-form {
-  background: white;
+  background: #ffffff;
   padding: 32px;
   border-radius: 16px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
 }
 
 fieldset {
   margin-bottom: 24px;
   border-radius: 12px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dee2e6;
   padding: 20px;
-  background: #f8fafc;
+  background: #f8f9fa;
   transition: all 0.3s ease;
 }
 
 fieldset:hover {
-  border-color: #cbd5e0;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  border-color: #adb5bd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 /* 기본 ?�보 ?�력 ?�드 */
@@ -154,13 +154,13 @@ fieldset:hover {
 
 .form-group label {
   font-weight: 600;
-  color: #2d3748;
+  color: #495057;
   font-size: 0.9rem;
 }
 
 .form-group input[type="text"] {
   padding: 10px 14px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dee2e6;
   border-radius: 8px;
   font-size: 0.95rem;
   transition: all 0.2s ease;
@@ -168,8 +168,8 @@ fieldset:hover {
 
 .form-group input[type="text"]:focus {
   outline: none;
-  border-color: #FF6C02;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
 }
 
 /* ?�디??버튼 그룹 */
@@ -193,7 +193,7 @@ fieldset:hover {
 .radio-custom {
   display: block;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dee2e6;
   border-radius: 8px;
   text-align: center;
   font-weight: 500;
@@ -212,28 +212,28 @@ fieldset:hover {
 .radio-grade {
   font-size: 1rem;
   font-weight: 600;
-  color: #2d3748;
+  color: #495057;
 }
 
 .radio-level {
   font-size: 0.85rem;
   font-weight: 400;
-  color: #718096;
+  color: #6c757d;
 }
 
 .radio-label:hover .radio-custom {
-  border-color: #cbd5e0;
+  border-color: #adb5bd;
   transform: translateY(-2px);
 }
 
 .radio-label input[type="radio"]:checked + .radio-custom {
-  border-color: #FF6C02;
-  background: linear-gradient(135deg, #FF6C02 0%, #FF8C42 100%);
+  border-color: #7c3aed;
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   color: white;
-  box-shadow: 0 4px 8px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
 }
 
-/* 선택된 라디오 버튼의 grade와 level 모두 흰색으로 */
+/* ?�택???�디??버튼??grade?�?level 모두 ?�색?�로 */
 .radio-label input[type="radio"]:checked + .radio-custom .radio-grade,
 .radio-label input[type="radio"]:checked + .radio-custom .radio-level {
   color: white;
@@ -261,7 +261,7 @@ fieldset:hover {
 .checkbox-custom {
   display: block;
   padding: 12px 16px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dee2e6;
   border-radius: 8px;
   text-align: center;
   font-weight: 500;
@@ -270,20 +270,20 @@ fieldset:hover {
 }
 
 .checkbox-label:hover .checkbox-custom {
-  border-color: #cbd5e0;
+  border-color: #adb5bd;
   transform: translateY(-2px);
 }
 
 .checkbox-label input[type="checkbox"]:checked + .checkbox-custom {
-  border-color: #FF6C02;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15) 0%, rgba(118, 75, 162, 0.15) 100%);
-  color: #5b21b6;
-  box-shadow: 0 2px 6px rgba(102, 126, 234, 0.2);
+  border-color: #7c3aed;
+  background: linear-gradient(135deg, rgba(124, 58, 237, 0.12) 0%, rgba(167, 139, 250, 0.12) 100%);
+  color: #7c3aed;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.2);
 }
 
 legend {
   font-weight: 600;
-  color: #2d3748;
+  color: #495057;
   padding: 0 12px;
   font-size: 1rem;
 }
@@ -291,21 +291,21 @@ legend {
 label {
   display: block;
   margin-bottom: 10px;
-  color: #4a5568;
+  color: #6c757d;
   font-size: 0.95rem;
   cursor: pointer;
   transition: color 0.2s ease;
 }
 
 label:hover {
-  color: #2d3748;
+  color: #495057;
 }
 
 select {
   width: 100%;
   padding: 10px 14px;
   margin-top: 8px;
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dee2e6;
   border-radius: 8px;
   font-size: 0.95rem;
   background: white;
@@ -314,13 +314,13 @@ select {
 }
 
 select:hover {
-  border-color: #cbd5e0;
+  border-color: #adb5bd;
 }
 
 select:focus {
   outline: none;
-  border-color: #FF6C02;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.1);
 }
 
 input[type="checkbox"],
@@ -329,7 +329,7 @@ input[type="radio"] {
   cursor: pointer;
   width: 18px;
   height: 18px;
-  accent-color: #FF6C02;
+  accent-color: #7c3aed;
 }
 
 /* ?�출 버튼 */
@@ -338,19 +338,19 @@ button[type="submit"] {
   cursor: pointer;
   border-radius: 10px;
   border: none;
-  background: linear-gradient(135deg, #FF6C02 0%, #FF8C42 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   color: white;
   font-weight: 600;
   padding: 14px 24px;
   font-size: 1.05rem;
   margin-top: 12px;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
 }
 
 button[type="submit"]:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 6px 20px rgba(124, 58, 237, 0.35);
 }
 
 button[type="submit"]:active {
@@ -363,14 +363,14 @@ button[type="submit"]:active {
   padding: 32px;
   border-radius: 16px;
   background: white;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
   animation: fadeIn 0.5s ease;
 }
 
 .result-header {
   margin-bottom: 28px;
   padding-bottom: 20px;
-  border-bottom: 2px solid #e2e8f0;
+  border-bottom: 2px solid #dee2e6;
 }
 
 .action-buttons {
@@ -408,8 +408,8 @@ button[type="submit"]:active {
   align-items: center;
   padding: 8px 16px;
   border-radius: 8px;
-  background: #f3f4f6;
-  color: #6b7280;
+  background: #f8f9fa;
+  color: #6c757d;
   font-size: 0.9rem;
   font-weight: 500;
   transition: all 0.3s ease;
@@ -427,36 +427,36 @@ button[type="submit"]:active {
 }
 
 #result h2 {
-  color: #1a202c;
+  color: #212529;
   margin-bottom: 12px;
   font-size: 1.5rem;
   font-weight: 700;
 }
 
 .result-summary {
-  color: #4a5568;
+  color: #495057;
   margin-bottom: 28px;
   font-size: 0.95rem;
 }
 
 .result-summary strong {
-  color: #FF6C02;
+  color: #7c3aed;
   font-weight: 600;
 }
 
 /* 과목 카드 - ???�자??*/
 .course-card {
-  border: 2px solid #e2e8f0;
+  border: 2px solid #dee2e6;
   border-radius: 12px;
   padding: 24px;
   margin-bottom: 20px;
-  background: #f8fafc;
+  background: #f8f9fa;
   transition: all 0.3s ease;
 }
 
 .course-card:hover {
-  border-color: #FF6C02;
-  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+  border-color: #7c3aed;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.15);
   transform: translateY(-2px);
 }
 
@@ -471,7 +471,7 @@ button[type="submit"]:active {
   gap: 16px;
   margin-bottom: 20px;
   padding-bottom: 16px;
-  border-bottom: 1px solid #e2e8f0;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .rank-badge {
@@ -481,12 +481,12 @@ button[type="submit"]:active {
   width: 36px;
   height: 36px;
   border-radius: 8px;
-  background: linear-gradient(135deg, #FF6C02 0%, #FF8C42 100%);
+  background: linear-gradient(135deg, #7c3aed 0%, #a78bfa 100%);
   color: white;
   font-weight: 700;
   font-size: 1.1rem;
   flex-shrink: 0;
-  box-shadow: 0 2px 4px rgba(102, 126, 234, 0.3);
+  box-shadow: 0 2px 4px rgba(124, 58, 237, 0.3);
 }
 
 .course-title-section {
@@ -494,7 +494,7 @@ button[type="submit"]:active {
 }
 
 .course-name {
-  color: #1a202c;
+  color: #212529;
   font-size: 1.25rem;
   font-weight: 700;
   margin-bottom: 8px;
@@ -512,7 +512,7 @@ button[type="submit"]:active {
   display: flex;
   align-items: center;
   gap: 6px;
-  color: #6b7280;
+  color: #6c757d;
   font-size: 0.9rem;
 }
 
@@ -540,12 +540,12 @@ button[type="submit"]:active {
   padding: 10px;
   background: white;
   border-radius: 8px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #dee2e6;
 }
 
 .detail-label {
   font-size: 0.75rem;
-  color: #6b7280;
+  color: #6c757d;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -553,7 +553,7 @@ button[type="submit"]:active {
 
 .detail-value {
   font-size: 0.9rem;
-  color: #1a202c;
+  color: #212529;
   font-weight: 600;
 }
 
@@ -572,16 +572,16 @@ button[type="submit"]:active {
   align-items: flex-start;
   gap: 3px;
   padding: 3px 6px;
-  background: #f7fafc;
+  background: #f8f9fa;
   border-radius: 4px;
-  color: #4a5568;
+  color: #495057;
   white-space: nowrap;
   font-size: 0.7rem;
 }
 
 .skill-label {
   font-size: 0.65rem;
-  color: #64748b;
+  color: #6c757d;
 }
 
 .skill-bars {
@@ -607,7 +607,7 @@ button[type="submit"]:active {
 /* 말하�?- ?�스???�크 */
 .skill-bar.skill-speaking.filled {
   background: linear-gradient(135deg, #ffb3ba 0%, #ffaec0 100%);
-  box-shadow: 0 1px 2px rgba(255, 174, 192, 0.3);
+  box-shadow: 0 1px 2px rgba(167, 139, 250, 0.3);
 }
 
 /* ?�기 - ?�스??그린 */
@@ -623,7 +623,7 @@ button[type="submit"]:active {
 }
 
 .skill-bar.empty {
-  background: #e2e8f0;
+  background: #dee2e6;
 }
 
 /* ?�징 ?�그 */
@@ -672,7 +672,7 @@ button[type="submit"]:active {
 .loading {
   text-align: center;
   padding: 40px;
-  color: #FF6C02;
+  color: #7c3aed;
   font-weight: 500;
 }
 
@@ -691,21 +691,21 @@ button[type="submit"]:active {
 .course-description {
   margin-top: 16px;
   padding: 16px;
-  background: linear-gradient(135deg, #f0f9ff 0%, #fef3c7 5%, #fff 100%);
-  border-left: 4px solid #FF6C02;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 5%, #fff 100%);
+  border-left: 4px solid #7c3aed;
   border-radius: 8px;
 }
 
 .description-label {
   font-size: 0.85rem;
   font-weight: 600;
-  color: #FF6C02;
+  color: #7c3aed;
   margin-bottom: 8px;
 }
 
 .description-text {
   font-size: 0.9rem;
-  color: #475569;
+  color: #495057;
   line-height: 1.6;
   margin: 0;
 }
@@ -715,7 +715,7 @@ button[type="submit"]:active {
   margin-top: 16px;
   padding: 16px;
   background: #ffffff;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #dee2e6;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -731,25 +731,25 @@ button[type="submit"]:active {
 .info-label {
   font-size: 0.8rem;
   font-weight: 600;
-  color: #64748b;
+  color: #6c757d;
 }
 
 .course-link {
   font-size: 0.85rem;
-  color: #FF6C02;
+  color: #7c3aed;
   text-decoration: none;
   word-break: break-all;
   transition: all 0.2s ease;
   padding: 8px 12px;
-  background: #f1f5f9;
+  background: #f8f9fa;
   border-radius: 6px;
-  border: 1px solid #e2e8f0;
+  border: 1px solid #dee2e6;
 }
 
 .course-link:hover {
-  color: #5a67d8;
-  background: #e0e7ff;
-  border-color: #c7d2fe;
+  color: #5b21b6;
+  background: #f5f3ff;
+  border-color: #c4b5fd;
   text-decoration: underline;
 }
 
@@ -777,13 +777,13 @@ button[type="submit"]:active {
   transform: scale(1.05);
 }
 
-/* 반응형 디자인 */
+/* 반응???�자??*/
 @media (max-width: 768px) {
   body {
     padding: 16px;
   }
 
-  /* 모바일에서 로고와 콘텐츠를 세로로 배치 */
+  /* 모바?�에??로고?�?콘텐츠�? ?�로�?배치 */
   .header-container {
     flex-direction: column;
     gap: 20px;
