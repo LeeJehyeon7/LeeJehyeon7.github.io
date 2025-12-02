@@ -201,6 +201,29 @@ fieldset:hover {
   background: white;
 }
 
+/* TOPIK 아이콘 색상 */
+.topik-icon {
+  font-size: 1.2em;
+  margin-right: 2px;
+}
+
+.topik3 {
+  color: #FFE500;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.2);
+}
+
+.topik4 {
+  color: #70D709;
+}
+
+.topik5 {
+  color: #42C7F1;
+}
+
+.topik6 {
+  color: #EB6F6F;
+}
+
 /* ?�국???��? ?�디??버튼 2�??�시 */
 .radio-custom-twoline {
   display: flex;
@@ -237,6 +260,27 @@ fieldset:hover {
 .radio-label input[type="radio"]:checked + .radio-custom .radio-grade,
 .radio-label input[type="radio"]:checked + .radio-custom .radio-level {
   color: white;
+}
+
+/* 선택된 상태에서 TOPIK 아이콘 색상 유지 */
+.radio-label input[type="radio"]:checked + .radio-custom .topik-icon {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom .topik3 {
+  color: #FFE500;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom .topik4 {
+  color: #70D709;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom .topik5 {
+  color: #42C7F1;
+}
+
+.radio-label input[type="radio"]:checked + .radio-custom .topik6 {
+  color: #EB6F6F;
 }
 
 /* 체크박스 그룹 */
