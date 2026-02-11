@@ -2,9 +2,9 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
-  <title>리케이온 외국인 유학생 교양 과목 추천기</title>
+  <title>리케이온 교양 과목 쉽게 찾기</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="리케이온 유학생을 위한 맞춤 교양 과목 추천" />
+  <meta name="description" content="리케이온 교양 과목 쉽게 찾기" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
@@ -13,9 +13,9 @@
       <!-- <img src="./01.Symbol.jpg" alt="청강문화산업대학교 로고" class="university-logo"> -->
       <div class="header-content">
         <div class="header-icon">📚</div>
-        <h1>리케이온 교양 과목 추천</h1>
-        <p class="subtitle">청강문화산업대학교 외국인 유학생을 위한 맞춤형 과목 찾기</p>
-        <span class="header-chip">🎯 간단한 3개 질문으로 나에게 딱 맞는 과목을 수강하세요!</span>
+        <h1>리케이온 교양 과목 쉽게 찾기</h1>
+        <p class="subtitle">공식 사이트 아님. 실제 수업과 다른 내용도 포함되어 있음.</p>
+        <span class="header-chip">🎯 간단한 질문으로 나에게 딱 맞는 과목을 찾으세요!</span>
       </div>
     </div>
   </div>
@@ -48,12 +48,27 @@
       </div>
     </fieldset>
 
-    <!-- 질문 1: 한국어 수준 -->
+    <!-- 질문 1: 학생 유형 -->
     <fieldset>
-      <legend>🌐 1. 당신의 한국어 수준은 무엇입니까?</legend>
+      <legend>🏫 1. 당신은 한국 학생입니까, 유학생입니까?</legend>
       <div class="radio-group">
         <label class="radio-label">
-          <input type="radio" name="koreanLevel" value="TOPIK3급(초급)" required>
+          <input type="radio" name="studentType" value="korean" required>
+          <span class="radio-custom">🇰🇷 한국 학생</span>
+        </label>
+        <label class="radio-label">
+          <input type="radio" name="studentType" value="international">
+          <span class="radio-custom">🌏 유학생</span>
+        </label>
+      </div>
+    </fieldset>
+
+    <!-- 질문 2: 한국어 수준 (유학생만 표시) -->
+    <fieldset id="q2-korean-level" style="display:none">
+      <legend>🌐 2. 당신의 한국어 수준은 어느 정도입니까?</legend>
+      <div class="radio-group">
+        <label class="radio-label">
+          <input type="radio" name="koreanLevel" value="TOPIK3급(초급)">
           <span class="radio-custom radio-custom-twoline">
             <span class="radio-grade"><span class="topik-icon topik3">●</span> TOPIK3급</span>
             <span class="radio-level">(초급)</span>
@@ -83,9 +98,9 @@
       </div>
     </fieldset>
 
-    <!-- 질문 2: 원하는 분야 -->
+    <!-- 질문 3: 원하는 분야 -->
     <fieldset>
-      <legend>🎨 2. 당신이 원하는 수업은 어떤 분야입니까? (복수 선택 가능)</legend>
+      <legend>🎨 3. 당신이 원하는 수업은 어떤 분야입니까? (여러 개 선택 가능)</legend>
       <div class="checkbox-group">
         <label class="checkbox-label">
           <input type="checkbox" name="field" value="인간과 가치">
@@ -110,9 +125,9 @@
       </div>
     </fieldset>
 
-    <!-- 질문 3: 상호작용 -->
+    <!-- 질문 4: 상호작용 -->
     <fieldset>
-      <legend>👥 3. 당신은 수업 중 한국학생과 적극적인 상호작용을 원합니까?</legend>
+      <legend>👥 4. 당신은 수업을 통해 다른 학생들과 만나기를 원합니까?</legend>
       <div class="radio-group">
         <label class="radio-label">
           <input type="radio" name="interaction" value="Y" required>
@@ -444,6 +459,7 @@
         const data = {
           major: answers.major,
           studentId: answers.studentId,
+          studentType: answers.studentType,
           koreanLevel: answers.koreanLevel,
           fields: answers.fields,
           interaction: answers.interaction,
@@ -494,9 +510,10 @@
       content += `학번: ${answers.studentId}\n\n`;
 
       content += `[응답 내용]\n`;
-      content += `1. 한국어 수준: ${answers.koreanLevel}\n`;
-      content += `2. 원하는 분야: ${answers.fields.length > 0 ? answers.fields.join(', ') : '선택 안 함'}\n`;
-      content += `3. 상호작용: ${answers.interaction === 'Y' ? '예' : answers.interaction === 'N' ? '아니오' : '상관없음'}\n\n`;
+      content += `1. 학생 유형: ${answers.studentType === 'korean' ? '한국 학생' : '유학생'}\n`;
+      content += `2. 한국어 수준: ${answers.koreanLevel}\n`;
+      content += `3. 원하는 분야: ${answers.fields.length > 0 ? answers.fields.join(', ') : '선택 안 함'}\n`;
+      content += `4. 상호작용: ${answers.interaction === 'Y' ? '예' : answers.interaction === 'N' ? '아니오' : '상관없음'}\n\n`;
 
       content += `[추천 과목 - 총 ${recommended.length}개]\n`;
       content += `-------------------------------------------\n\n`;
@@ -536,14 +553,31 @@
     // ========================================
     function initializeSurveyForm() {
       const form = document.getElementById("survey-form");
+      const q2Fieldset = document.getElementById('q2-korean-level');
+
+      // Q1: 학생 유형 선택에 따른 Q2 표시/숨김
+      document.querySelectorAll('input[name="studentType"]').forEach(radio => {
+        radio.addEventListener('change', function() {
+          if (this.value === 'korean') {
+            q2Fieldset.style.display = 'none';
+            // 한국 학생은 TOPIK 6급으로 자동 설정
+            document.querySelector('input[name="koreanLevel"][value="TOPIK6급(고급)"]').checked = true;
+          } else {
+            q2Fieldset.style.display = '';
+          }
+        });
+      });
 
       form.addEventListener("submit", function(e) {
         e.preventDefault();
 
         const major = form.major.value.trim();
         const studentId = form.studentId.value.trim();
-        const koreanLevel = form.koreanLevel.value;
+        const studentType = form.studentType.value;
         const interaction = form.interaction.value;
+
+        // 한국 학생이면 TOPIK 6급 강제 설정
+        const koreanLevel = studentType === 'korean' ? 'TOPIK6급(고급)' : form.koreanLevel.value;
 
         const fieldNodes = form.querySelectorAll('input[name="field"]:checked');
         const fields = Array.from(fieldNodes).map(n => n.value);
@@ -551,6 +585,7 @@
         const answers = {
           major,
           studentId,
+          studentType,
           koreanLevel,
           fields,
           interaction
